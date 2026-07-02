@@ -6,361 +6,371 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>绿电直连配储计算器 - 终极版 v7.0</title>
-<!-- v7.0-1782972180 -->
+<title>绿电直连配储计算器 v7.0</title>
+<!-- v7.1 UI Redesign -->
 <style>
+:root {
+  --primary: #2563eb;
+  --primary-light: #3b82f6;
+  --primary-dark: #1d4ed8;
+  --bg-page: #f0f4f8;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f8fafc;
+  --bg-input: #f8fafc;
+  --text-title: #1e293b;
+  --text-label: #475569;
+  --text-muted: #94a3b8;
+  --text-formula: #94a3b8;
+  --border: #e2e8f0;
+  --border-hover: #cbd5e1;
+  --accent-green: #059669;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.10), 0 4px 8px rgba(0,0,0,0.05);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); min-height: 100vh; color: #333; }
-.container { max-width: 1400px; margin: 0 auto; padding: 20px; }
-.header { text-align: center; color: white; margin-bottom: 24px; }
-.header h1 { font-size: 28px; font-weight: 700; text-shadow: 0 2px 8px rgba(0,0,0,0.3); margin-bottom: 6px; }
-.header p { font-size: 14px; color: rgba(255,255,255,0.7); }
-.main-content { display: flex; gap: 20px; align-items: flex-start; }
-.input-panel { width: 340px; background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); overflow: hidden; flex-shrink: 0; }
-.panel-title { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 14px 20px; font-size: 16px; font-weight: 700; display: flex; justify-content: space-between; align-items: center; }
-.panel-title .btn-reset { background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: white; padding: 5px 14px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: all 0.2s; }
-.panel-title .btn-reset:hover { background: rgba(255,255,255,0.35); }
-.input-body { padding: 16px; max-height: calc(100vh - 160px); overflow-y: auto; }
-.input-group { margin-bottom: 16px; }
-.group-header { font-size: 13px; font-weight: 700; color: #667eea; padding: 6px 0 6px 12px; border-left: 3px solid #667eea; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
-.input-row { display: flex; align-items: center; margin-bottom: 8px; padding: 0 4px; }
-.input-row label { font-size: 13px; color: #444; width: 140px; flex-shrink: 0; }
-.input-row input, .input-row select { flex: 1; padding: 6px 10px; border: 1.5px solid #e0e0e0; border-radius: 8px; font-size: 13px; outline: none; transition: border-color 0.2s; min-width: 0; }
-.input-row input:focus, .input-row select:focus { border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.1); }
-.input-row .cell-ref { font-size: 11px; color: #999; margin-left: 6px; font-family: 'Courier New', monospace; }
-.input-row .unit { font-size: 12px; color: #888; margin-left: 6px; width: 60px; flex-shrink: 0; }
-.input-row .remark { font-size: 11px; color: #aaa; width: 80px; flex-shrink: 0; text-align: right; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+  background: var(--bg-page);
+  color: var(--text-title);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+.container { max-width: 1440px; margin: 0 auto; padding: 24px 20px; }
+
+/* ===== 顶部标题栏 ===== */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm); padding: 16px 26px;
+  margin-bottom: 22px; border: 1px solid var(--border);
+}
+.topbar-left { display: flex; align-items: center; gap: 12px; }
+.topbar-icon { font-size: 26px; }
+.topbar h1 { font-size: 19px; font-weight: 800; color: var(--text-title); letter-spacing: -0.3px; }
+.badge-v { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+.topbar-right { font-size: 12px; color: var(--text-muted); }
+
+/* ===== 主布局 ===== */
+.main-content { display: flex; gap: 22px; align-items: flex-start; }
+
+/* ===== 左侧输入面板 ===== */
+.input-panel {
+  width: 310px; flex-shrink: 0;
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); border: 1px solid var(--border); overflow: hidden;
+}
+.panel-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white; padding: 15px 20px; font-size: 14px; font-weight: 700;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.btn-reset {
+  background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.30);
+  color: white; padding: 4px 13px; border-radius: 20px;
+  cursor: pointer; font-size: 12px; font-weight: 600; transition: background 0.2s;
+}
+.btn-reset:hover { background: rgba(255,255,255,0.30); }
+
+.input-body { padding: 16px; max-height: calc(100vh - 170px); overflow-y: auto; }
+.input-group { margin-bottom: 18px; }
+
+.group-label {
+  font-size: 11px; font-weight: 700; color: var(--primary);
+  letter-spacing: 1px; text-transform: uppercase;
+  padding-bottom: 7px; border-bottom: 2px solid var(--primary);
+  margin-bottom: 11px; display: inline-block;
+}
+
+.input-row { display: flex; align-items: center; margin-bottom: 8px; padding: 0 2px; }
+.input-row label { font-size: 13px; color: var(--text-label); width: 122px; flex-shrink: 0; }
+.input-row input {
+  flex: 1; padding: 7px 9px;
+  border: 1.5px solid var(--border); border-radius: var(--radius-sm);
+  font-size: 13px; color: var(--text-title); outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s; min-width: 0;
+  background: var(--bg-input);
+}
+.input-row input:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.10);
+  background: white;
+}
+.input-row .unit { font-size: 11px; color: var(--text-muted); margin-left: 5px; width: 52px; flex-shrink: 0; text-align: right; }
+.input-row .cell-tag { font-size: 10px; color: var(--text-muted); margin-left: 4px; font-family: 'Courier New', monospace; background: var(--bg-page); padding: 1px 4px; border-radius: 3px; }
+
+.calc-btn-wrap { text-align: center; margin-top: 16px; }
+.calc-btn {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white; border: none; padding: 10px 34px; border-radius: 24px;
+  font-size: 14px; font-weight: 700; cursor: pointer; letter-spacing: 0.5px;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.32);
+  transition: all 0.2s;
+}
+.calc-btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,99,235,0.38); }
+
+/* ===== 右侧结果面板 ===== */
 .right-panel { flex: 1; min-width: 0; }
-.results-section { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 20px; margin-bottom: 20px; }
-.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-top: 14px; }
-.result-card { background: #f8f9fc; border-radius: 10px; padding: 12px 14px; border: 1px solid #e8ecf4; transition: all 0.2s; }
-.result-card:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: #667eea; }
-.result-card.highlight { background: linear-gradient(135deg, #667eea20, #764ba220); border-color: #667eea; }
-.result-label { font-size: 12px; color: #666; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
-.result-label .cell-code { font-family: 'Courier New', monospace; font-size: 11px; color: #999; background: #f0f0f0; padding: 1px 5px; border-radius: 3px; }
-.result-value { font-size: 20px; font-weight: 700; color: #222; }
-.result-value .unit { font-size: 12px; color: #888; font-weight: 400; margin-left: 4px; }
-.result-formula { font-size: 11px; color: #aaa; font-family: 'Courier New', monospace; margin-top: 3px; }
-.status-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 12px; font-weight: 600; }
-.status-success { background: #d4edda; color: #155724; }
-.status-warning { background: #fff3cd; color: #856404; }
-.chart-section { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 20px; margin-bottom: 20px; }
-.chart-header { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 14px; }
-.chart-container { position: relative; height: 300px; width: 100%; }
-.table-section { background: white; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); padding: 20px; }
-.table-header { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 14px; }
-.table-container { max-height: 400px; overflow-y: auto; border-radius: 8px; border: 1px solid #e8ecf4; }
+
+.results-section {
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); border: 1px solid var(--border);
+  padding: 18px 20px; margin-bottom: 18px;
+}
+.section-label {
+  font-size: 11px; font-weight: 700; color: var(--primary);
+  letter-spacing: 1px; text-transform: uppercase;
+  margin-bottom: 12px; padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary); display: inline-block;
+}
+.results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 10px; }
+
+.result-card {
+  background: var(--bg-page); border-radius: var(--radius-md);
+  padding: 12px 14px; border: 1px solid var(--border);
+  transition: all 0.2s; position: relative; overflow: hidden;
+}
+.result-card:hover {
+  background: var(--bg-card-hover); border-color: var(--primary-light);
+  transform: translateY(-1px); box-shadow: var(--shadow-sm);
+}
+.result-card.highlight {
+  background: linear-gradient(135deg, #eff6ff, #f0f9ff);
+  border-color: var(--primary-light);
+}
+.result-card.highlight::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-light));
+}
+.result-label {
+  font-size: 11px; color: var(--text-muted); margin-bottom: 4px;
+  display: flex; justify-content: space-between; align-items: center;
+}
+.result-label .cell-tag { font-family: 'Courier New', monospace; font-size: 10px; color: var(--text-muted); background: var(--border); padding: 1px 5px; border-radius: 3px; }
+.result-value { font-size: 18px; font-weight: 800; color: var(--text-title); line-height: 1.2; }
+.result-value .unit { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 3px; }
+.result-formula { font-size: 10px; color: var(--text-formula); font-family: 'Courier New', monospace; margin-top: 4px; }
+
+.status-badge { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: 11px; font-weight: 700; margin-top: 2px; }
+.status-success { background: #dcfce7; color: #15803d; }
+.status-warning { background: #fef9c3; color: #a16207; }
+
+/* ===== 图表 ===== */
+.chart-section {
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); border: 1px solid var(--border);
+  padding: 18px 20px; margin-bottom: 18px;
+}
+.section-title { font-size: 14px; font-weight: 700; color: var(--text-title); margin-bottom: 12px; }
+.chart-container { position: relative; height: 270px; width: 100%; }
+
+/* ===== 24小时时序表 ===== */
+.table-section {
+  background: var(--bg-card); border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); border: 1px solid var(--border);
+  padding: 18px 20px; margin-bottom: 18px;
+}
+.table-container { max-height: 360px; overflow-y: auto; border-radius: var(--radius-md); border: 1px solid var(--border); overflow: hidden; }
 .timing-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-.timing-table thead { position: sticky; top: 0; background: linear-gradient(135deg, #667eea, #764ba2); color: white; z-index: 1; }
-.timing-table th { padding: 8px 6px; font-weight: 600; white-space: nowrap; }
-.timing-table td { padding: 6px; text-align: center; border-bottom: 1px solid #f0f0f0; }
-.timing-table tbody tr:hover { background: #f0f7ff; }
-.positive { color: #28a745; font-weight: 600; }
-.negative { color: #dc3545; font-weight: 600; }
-.empty-note { text-align: center; color: #999; padding: 40px; font-size: 14px; }
-@media (max-width: 1100px) { .main-content { flex-direction: column; } .input-panel { width: 100%; } .input-body { max-height: none; } }
+.timing-table thead { position: sticky; top: 0; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; z-index: 1; }
+.timing-table th { padding: 8px 6px; font-weight: 600; white-space: nowrap; text-align: center; font-size: 11px; }
+.timing-table td { padding: 6px; text-align: center; border-bottom: 1px solid var(--border); color: var(--text-label); }
+.timing-table tbody tr:hover td { background: #eff6ff; }
+.timing-table tbody tr:last-child td { border-bottom: none; }
+.positive { color: var(--accent-green); font-weight: 700; }
+.negative { color: #dc2626; font-weight: 700; }
+
+@media (max-width: 1080px) { .main-content { flex-direction: column; } .input-panel { width: 100%; } .input-body { max-height: none; } }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
 <div class="container">
-  <div class="header">
-    <h1>⚡ 绿电直连配储计算器</h1>
-    <p>基于原始Excel表格公式开发 · 100%复刻</p>
+
+  <!-- ===== 顶部标题 ===== -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-icon">⚡</span>
+      <h1>绿电直连配储计算器</h1>
+      <span class="badge-v">v7.0</span>
+    </div>
+    <div class="topbar-right">基于原始Excel公式开发 · 100%复刻</div>
   </div>
+
   <div class="main-content">
-    <!-- ========== 左侧输入面板 ========== -->
+
+    <!-- ===== 左侧输入面板 ===== -->
     <div class="input-panel">
-      <div class="panel-title">
-        📥 输入参数
+      <div class="panel-header">
+        <span>📥 输入参数</span>
         <button class="btn-reset" onclick="resetForm()">重置</button>
       </div>
       <div class="input-body">
 
-        <!-- 基础参数 -->
         <div class="input-group">
-          <div class="group-header">基础参数</div>
+          <div class="group-label">基础参数</div>
           <div class="input-row">
             <label>负荷功率</label>
             <input type="number" id="B1" value="250" step="1">
             <span class="unit">MW</span>
-            <span class="cell-ref">B1</span>
+            <span class="cell-tag">B1</span>
           </div>
           <div class="input-row">
             <label>年用电时长</label>
             <input type="number" id="B22" value="8760" step="100">
             <span class="unit">H</span>
-            <span class="cell-ref">B22</span>
+            <span class="cell-tag">B22</span>
           </div>
           <div class="input-row">
             <label>自发自用比例</label>
             <input type="number" id="B3" value="0.6" step="0.01" min="0" max="1">
             <span class="unit"></span>
-            <span class="cell-ref">B3</span>
+            <span class="cell-tag">B3</span>
           </div>
         </div>
 
-        <!-- 新能源参数 -->
         <div class="input-group">
-          <div class="group-header">新能源参数</div>
+          <div class="group-label">新能源参数</div>
           <div class="input-row">
             <label>光伏规模</label>
             <input type="number" id="B9" value="850" step="1">
             <span class="unit">MW</span>
-            <span class="cell-ref">B9</span>
+            <span class="cell-tag">B9</span>
           </div>
           <div class="input-row">
             <label>光伏利用小时</label>
             <input type="number" id="B27" value="1730" step="10">
             <span class="unit">H</span>
-            <span class="cell-ref">B27</span>
+            <span class="cell-tag">B27</span>
           </div>
           <div class="input-row">
             <label>风电规模</label>
             <input type="number" id="B8" value="0" step="1">
             <span class="unit">MW</span>
-            <span class="cell-ref">B8</span>
+            <span class="cell-tag">B8</span>
           </div>
           <div class="input-row">
             <label>风电利用小时</label>
             <input type="number" id="B30" value="2430" step="10">
             <span class="unit">H</span>
-            <span class="cell-ref">B30</span>
+            <span class="cell-tag">B30</span>
           </div>
         </div>
 
-        <!-- 经济参数 -->
         <div class="input-group">
-          <div class="group-header">经济参数</div>
+          <div class="group-label">经济参数</div>
           <div class="input-row">
             <label>光伏单位成本</label>
             <input type="number" id="B5" value="40" step="1">
             <span class="unit">万元/MW</span>
-            <span class="cell-ref">B5</span>
+            <span class="cell-tag">B5</span>
           </div>
           <div class="input-row">
             <label>储能单位成本</label>
             <input type="number" id="B6" value="15" step="1">
             <span class="unit">万元/MWh</span>
-            <span class="cell-ref">B6</span>
+            <span class="cell-tag">B6</span>
           </div>
           <div class="input-row">
             <label>充放电效率</label>
             <input type="number" id="eff" value="0.85" step="0.01" min="0" max="1">
             <span class="unit"></span>
-            <span class="cell-ref">效率</span>
+            <span class="cell-tag">效率</span>
           </div>
         </div>
 
-        <div style="text-align:center; margin-top:16px;">
-          <button onclick="calculate()" style="background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:10px 32px;border-radius:25px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(102,126,234,0.4);transition:all 0.2s;">🚀 开始计算</button>
+        <div class="calc-btn-wrap">
+          <button class="calc-btn" onclick="calculate()">🚀 开始计算</button>
         </div>
       </div>
     </div>
 
-    <!-- ========== 右侧结果面板 ========== -->
+    <!-- ===== 右侧结果面板 ===== -->
     <div class="right-panel">
 
       <!-- 基础指标 -->
       <div class="results-section">
-        <div class="group-header">基础指标</div>
+        <div class="section-label">📊 基础指标</div>
         <div class="results-grid">
-          <div class="result-card">
-            <div class="result-label">总电量 <span class="cell-ref">B2</span></div>
-            <div class="result-value"><span id="B2">-</span><span class="unit">MWh/年</span></div>
-            <div class="result-formula">=B1×B22</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">自发自用电量 <span class="cell-ref">B4</span></div>
-            <div class="result-value"><span id="B4">-</span><span class="unit">MWh/年</span></div>
-            <div class="result-formula">=B3×B2</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">负荷日用电量 <span class="cell-ref">B23</span></div>
-            <div class="result-value"><span id="B23">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=B22×B1/365</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">大电网供电量 <span class="cell-ref">B25</span></div>
-            <div class="result-value"><span id="B25">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=B2×(1-B3)/365</div>
-          </div>
+          <div class="result-card"><div class="result-label">总电量 <span class="cell-tag">B2</span></div><div class="result-value"><span id="B2">-</span><span class="unit">MWh/年</span></div><div class="result-formula">=B1×B22</div></div>
+          <div class="result-card"><div class="result-label">自发自用电量 <span class="cell-tag">B4</span></div><div class="result-value"><span id="B4">-</span><span class="unit">MWh/年</span></div><div class="result-formula">=B3×B2</div></div>
+          <div class="result-card"><div class="result-label">负荷日用电量 <span class="cell-tag">B23</span></div><div class="result-value"><span id="B23">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=B22×B1/365</div></div>
+          <div class="result-card"><div class="result-label">大电网供电量 <span class="cell-tag">B25</span></div><div class="result-value"><span id="B25">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=B2×(1-B3)/365</div></div>
         </div>
       </div>
 
       <!-- 新能源发电 -->
       <div class="results-section">
-        <div class="group-header">新能源发电</div>
+        <div class="section-label">⚡ 新能源发电</div>
         <div class="results-grid">
-          <div class="result-card">
-            <div class="result-label">光伏日发电量 <span class="cell-ref">B28</span></div>
-            <div class="result-value"><span id="B28">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=E68</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">风电日发电量 <span class="cell-ref">B31</span></div>
-            <div class="result-value"><span id="B31">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=B30×B8/365</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">时序光伏出力 <span class="cell-ref">E68</span></div>
-            <div class="result-value"><span id="E68">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=SUM(E44:E67)</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">时序风电出力 <span class="cell-ref">D68</span></div>
-            <div class="result-value"><span id="D68">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=SUM(D44:D67)</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">新能源总发电量 <span class="cell-ref">F68</span></div>
-            <div class="result-value"><span id="F68">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=D68+E68</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">光伏年发电量 <span class="cell-ref">B69</span></div>
-            <div class="result-value"><span id="B69">-</span><span class="unit">MWh/年</span></div>
-            <div class="result-formula">=E68×365</div>
-          </div>
+          <div class="result-card"><div class="result-label">光伏日发电量 <span class="cell-tag">B28</span></div><div class="result-value"><span id="B28">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=E68</div></div>
+          <div class="result-card"><div class="result-label">风电日发电量 <span class="cell-tag">B31</span></div><div class="result-value"><span id="B31">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=B30×B8/365</div></div>
+          <div class="result-card"><div class="result-label">时序光伏出力 <span class="cell-tag">E68</span></div><div class="result-value"><span id="E68">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=SUM(E44:E67)</div></div>
+          <div class="result-card"><div class="result-label">时序风电出力 <span class="cell-tag">D68</span></div><div class="result-value"><span id="D68">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=SUM(D44:D67)</div></div>
+          <div class="result-card"><div class="result-label">新能源总发电量 <span class="cell-tag">F68</span></div><div class="result-value"><span id="F68">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=D68+E68</div></div>
+          <div class="result-card"><div class="result-label">光伏年发电量 <span class="cell-tag">B69</span></div><div class="result-value"><span id="B69">-</span><span class="unit">MWh/年</span></div><div class="result-formula">=E68×365</div></div>
         </div>
       </div>
 
       <!-- 储能核心指标 -->
       <div class="results-section">
-        <div class="group-header">🔋 储能核心指标</div>
+        <div class="section-label">🔋 储能核心指标</div>
         <div class="results-grid">
-          <div class="result-card highlight">
-            <div class="result-label">储能规模(反算) <span class="cell-ref">B10</span></div>
-            <div class="result-value"><span id="B10_calc">-</span><span class="unit">MWh</span></div>
-            <div class="result-formula">=B35</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">风光超负荷可冲电量 <span class="cell-ref">B32</span></div>
-            <div class="result-value"><span id="B32">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=I68</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">储能日放电容量 <span class="cell-ref">B34</span></div>
-            <div class="result-value"><span id="B34">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=IF((J68-B25)>0,J68-B25,0)</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">储能日储存容量 <span class="cell-ref">B35</span></div>
-            <div class="result-value"><span id="B35">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=B34/效率</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">最大储能功率 <span class="cell-ref">B33</span></div>
-            <div class="result-value"><span id="B33">-</span><span class="unit">MW</span></div>
-            <div class="result-formula">=-MIN(I44:I67)</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">时序可充电量 <span class="cell-ref">I68</span></div>
-            <div class="result-value"><span id="I68">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=SUM(I44:I67)</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">时序放电量 <span class="cell-ref">J68</span></div>
-            <div class="result-value"><span id="J68">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=SUM(J44:J67)</div>
-          </div>
+          <div class="result-card highlight"><div class="result-label">储能规模(反算) <span class="cell-tag">B10</span></div><div class="result-value"><span id="B10_calc">-</span><span class="unit">MWh</span></div><div class="result-formula">=B35</div></div>
+          <div class="result-card"><div class="result-label">风光超负荷可冲电量 <span class="cell-tag">B32</span></div><div class="result-value"><span id="B32">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=I68</div></div>
+          <div class="result-card"><div class="result-label">储能日放电容量 <span class="cell-tag">B34</span></div><div class="result-value"><span id="B34">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=IF((J68-B25)>0,J68-B25,0)</div></div>
+          <div class="result-card"><div class="result-label">储能日储存容量 <span class="cell-tag">B35</span></div><div class="result-value"><span id="B35">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=B34/效率</div></div>
+          <div class="result-card"><div class="result-label">最大储能功率 <span class="cell-tag">B33</span></div><div class="result-value"><span id="B33">-</span><span class="unit">MW</span></div><div class="result-formula">=-MIN(I44:I67)</div></div>
+          <div class="result-card"><div class="result-label">时序可充电量 <span class="cell-tag">I68</span></div><div class="result-value"><span id="I68">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=SUM(I44:I67)</div></div>
+          <div class="result-card"><div class="result-label">时序放电量 <span class="cell-tag">J68</span></div><div class="result-value"><span id="J68">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=SUM(J44:J67)</div></div>
         </div>
       </div>
 
       <!-- 消纳与损耗 -->
       <div class="results-section">
-        <div class="group-header">📉 消纳与损耗</div>
+        <div class="section-label">📉 消纳与损耗</div>
         <div class="results-grid">
-          <div class="result-card">
-            <div class="result-label">弃电量 <span class="cell-ref">B36</span></div>
-            <div class="result-value"><span id="B36">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=B32-B35</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">弃电率 <span class="cell-ref">B37</span></div>
-            <div class="result-value"><span id="B37">-</span><span class="unit">%</span></div>
-            <div class="result-formula">=B36/(B28+B31)</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">绿电终端消纳量 <span class="cell-ref">B38</span></div>
-            <div class="result-value"><span id="B38">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=IF(B36&lt;0,B28+B31,B28+B31-B36-(B35-B34))</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">绿电供电占负荷比 <span class="cell-ref">B39</span></div>
-            <div class="result-value"><span id="B39">-</span><span class="unit">%</span></div>
-            <div class="result-formula">=B38/G68</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">方案校验 <span class="cell-ref">B40</span></div>
-            <div class="result-value"><span id="B40">-</span></div>
-            <div class="result-formula">=IF(B39&lt;B3,&quot;未满足&quot;,&quot;满足要求&quot;)</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">充放电损耗 <span class="cell-ref">B41</span></div>
-            <div class="result-value"><span id="B41">-</span><span class="unit">MWh/日</span></div>
-            <div class="result-formula">=B35-B34</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">损耗率 <span class="cell-ref">B42</span></div>
-            <div class="result-value"><span id="B42">-</span><span class="unit">%</span></div>
-            <div class="result-formula">=B41/B28</div>
-          </div>
+          <div class="result-card"><div class="result-label">弃电量 <span class="cell-tag">B36</span></div><div class="result-value"><span id="B36">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=B32-B35</div></div>
+          <div class="result-card"><div class="result-label">弃电率 <span class="cell-tag">B37</span></div><div class="result-value"><span id="B37">-</span><span class="unit">%</span></div><div class="result-formula">=B36/(B28+B31)</div></div>
+          <div class="result-card"><div class="result-label">绿电终端消纳量 <span class="cell-tag">B38</span></div><div class="result-value"><span id="B38">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=IF(B36&lt;0,B28+B31,B28+B31-B36-(B35-B34))</div></div>
+          <div class="result-card"><div class="result-label">绿电供电占负荷比 <span class="cell-tag">B39</span></div><div class="result-value"><span id="B39">-</span><span class="unit">%</span></div><div class="result-formula">=B38/G68</div></div>
+          <div class="result-card"><div class="result-label">方案校验 <span class="cell-tag">B40</span></div><div class="result-value"><span id="B40">-</span></div><div class="result-formula">=IF(B39&lt;B3,&quot;未满足&quot;,&quot;满足要求&quot;)</div></div>
+          <div class="result-card"><div class="result-label">充放电损耗 <span class="cell-tag">B41</span></div><div class="result-value"><span id="B41">-</span><span class="unit">MWh/日</span></div><div class="result-formula">=B35-B34</div></div>
+          <div class="result-card"><div class="result-label">损耗率 <span class="cell-tag">B42</span></div><div class="result-value"><span id="B42">-</span><span class="unit">%</span></div><div class="result-formula">=B41/B28</div></div>
         </div>
       </div>
 
       <!-- 经济指标 -->
       <div class="results-section">
-        <div class="group-header">💰 经济指标</div>
+        <div class="section-label">💰 经济指标</div>
         <div class="results-grid">
-          <div class="result-card">
-            <div class="result-label">光伏成本 <span class="cell-ref">B12</span></div>
-            <div class="result-value"><span id="B12">-</span><span class="unit">万元</span></div>
-            <div class="result-formula">=B9×1000000×B5/10000</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">储能成本 <span class="cell-ref">B13</span></div>
-            <div class="result-value"><span id="B13">-</span><span class="unit">万元</span></div>
-            <div class="result-formula">=B10×B6×1000000/10000</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">总投资 <span class="cell-ref">B14</span></div>
-            <div class="result-value"><span id="B14">-</span><span class="unit">万元</span></div>
-            <div class="result-formula">=B13+B12</div>
-          </div>
-          <div class="result-card">
-            <div class="result-label">单位投资 <span class="cell-ref">B15</span></div>
-            <div class="result-value"><span id="B15">-</span><span class="unit">元/kWh</span></div>
-            <div class="result-formula">=B14/B4×10000/1000</div>
-          </div>
+          <div class="result-card"><div class="result-label">光伏成本 <span class="cell-tag">B12</span></div><div class="result-value"><span id="B12">-</span><span class="unit">万元</span></div><div class="result-formula">=B9×B5×10⁴</div></div>
+          <div class="result-card"><div class="result-label">储能成本 <span class="cell-tag">B13</span></div><div class="result-value"><span id="B13">-</span><span class="unit">万元</span></div><div class="result-formula">=B10×B6×10⁴</div></div>
+          <div class="result-card"><div class="result-label">总投资 <span class="cell-tag">B14</span></div><div class="result-value"><span id="B14">-</span><span class="unit">万元</span></div><div class="result-formula">=B13+B12</div></div>
+          <div class="result-card"><div class="result-label">单位投资 <span class="cell-tag">B15</span></div><div class="result-value"><span id="B15">-</span><span class="unit">元/kWh</span></div><div class="result-formula">=B14/B4×10</div></div>
         </div>
       </div>
 
-      <!-- 图表区 -->
+      <!-- 图表 -->
       <div class="chart-section">
-        <div class="chart-header">📊 24小时新能源出力与负荷匹配</div>
-        <div class="chart-container">
-          <canvas id="timingChart"></canvas>
-        </div>
+        <div class="section-title">📊 24小时新能源出力与负荷匹配</div>
+        <div class="chart-container"><canvas id="timingChart"></canvas></div>
       </div>
 
       <!-- 24小时时序表 -->
       <div class="table-section">
-        <div class="table-header">⏰ 24小时时序模拟数据</div>
+        <div class="section-title">⏰ 24小时时序模拟数据</div>
         <div class="table-container">
           <table class="timing-table">
             <thead>
               <tr>
-                <th>时间</th>
-                <th>风电典型<br>B列</th>
-                <th>光伏典型<br>C列</th>
-                <th>D<br>风电出力</th>
-                <th>E<br>光伏出力</th>
-                <th>F<br>合计出力</th>
-                <th>G<br>负荷规模</th>
-                <th>H<br>电量盈余<br>缺口</th>
-                <th>I<br>可充电量</th>
-                <th>J<br>放电量</th>
+                <th>时间</th><th>风电典型</th><th>光伏典型</th>
+                <th>D 风电出力</th><th>E 光伏出力</th><th>F 合计出力</th>
+                <th>G 负荷规模</th><th>H 盈余/缺口</th><th>I 可充电量</th><th>J 放电量</th>
               </tr>
             </thead>
             <tbody id="timingTableBody"></tbody>
@@ -373,203 +383,140 @@ body { font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif; backgro
 </div><!-- end container -->
 
 <script>
-// ===== 典型出力曲线（来自Excel原始数据） =====
-// 风电典型出力曲线（B列，2400H/1MW标准化）
 const windTypicalCurve = [400,420,450,440,410,380,330,250,180,120,100,110,130,150,160,150,170,200,260,320,360,380,390,400];
-
-// 光伏典型出力曲线（C列，2000H/1MW标准化 = 实际发电量/MW）
-const solarTypicalCurve = [
-  0, 0, 0, 0, 0, 0,
-  7.7913219847826, 39.59370305398, 153.101506958445, 356.012125090245,
-  528.681310187013, 644.478990672241, 688.178788058807, 671.619950064939,
-  600.410175530658, 489.695826132664, 343.900628702341, 152.128559934939,
-  47.3802742098664, 10.7878541445652, 0, 0, 0, 0
-];
-
+const solarTypicalCurve = [0,0,0,0,0,0,7.7913219847826,39.59370305398,153.101506958445,356.012125090245,528.681310187013,644.478990672241,688.178788058807,671.619950064939,600.410175530658,489.695826132664,343.900628702341,152.128559934939,47.3802742098664,10.7878541445652,0,0,0,0];
 let timingChart = null;
 
 function calculate() {
-  // ===== 读取输入 =====
-  const B1  = parseFloat(document.getElementById('B1').value)  || 0;   // 负荷功率 MW
-  const B22 = parseFloat(document.getElementById('B22').value) || 0;   // 年用电时长 H
-  const B3  = parseFloat(document.getElementById('B3').value)  || 0;   // 自发自用比例
-  const B9  = parseFloat(document.getElementById('B9').value)  || 0;   // 光伏规模 MW
-  const B8  = parseFloat(document.getElementById('B8').value)  || 0;   // 风电规模 MW
-  const B30 = parseFloat(document.getElementById('B30').value) || 0;   // 风电利用小时
-  const B5  = parseFloat(document.getElementById('B5').value)  || 0;   // 光伏单位成本 万元/MW
-  const B6  = parseFloat(document.getElementById('B6').value)  || 0;   // 储能单位成本 万元/MWh
-  const eff = parseFloat(document.getElementById('eff').value) || 0.85; // 充放电效率
+  var B1  = parseFloat(document.getElementById('B1').value)  || 0;
+  var B22 = parseFloat(document.getElementById('B22').value) || 0;
+  var B3  = parseFloat(document.getElementById('B3').value)  || 0;
+  var B9  = parseFloat(document.getElementById('B9').value)  || 0;
+  var B8  = parseFloat(document.getElementById('B8').value)  || 0;
+  var B30 = parseFloat(document.getElementById('B30').value) || 0;
+  var B5  = parseFloat(document.getElementById('B5').value)  || 0;
+  var B6  = parseFloat(document.getElementById('B6').value)  || 0;
+  var eff = parseFloat(document.getElementById('eff').value) || 0.85;
 
-  // ===== 基础计算（与Excel B列公式完全一致） =====
-  const B2  = B1 * B22;                     // B2 = B1*B22（总电量）
-  const B4  = B3 * B2;                     // B4 = B3*B2（自发自用电量）
-  const B21 = B1;                          // B21 = B1（负荷功率）
-  const B23 = B22 * B21 / 365;             // B23 = B22*B21/365（负荷日用电量）
-  const B24 = B3;                          // B24 = B3（绿电终端供电要求）
-  const B25 = B2 * (1 - B24) / 365;       // B25 = B2*(1-B24)/365（大电网供电量）
-  const B26 = B9;                          // B26 = B9（光伏功率）
-  const B29 = B8;                          // B29 = B8（风电功率）
+  var B2  = B1 * B22;
+  var B4  = B3 * B2;
+  var B23 = B22 * B1 / 365;
+  var B25 = B2 * (1 - B3) / 365;
 
-  // ===== 24小时时序模拟 =====
-  const timing = generateTimingData(B1, B22, B8, B9, eff);
+  var timing = generateTimingData(B1, B22, B8, B9, eff);
 
-  // ===== 汇总计算（与Excel公式完全一致） =====
-  const D68 = timing.D68;                  // =SUM(D44:D67) 风电日发电量
-  const E68 = timing.E68;                  // =SUM(E44:E67) 光伏日发电量
-  const F68 = D68 + E68;                  // =D68+E68 新能源总发电量
-  const G68 = timing.G68;                  // =SUM(G44:G67) 负荷日总用电量
-  const I68 = timing.I68;                  // =SUM(I44:I67) 可充电量
-  const J68 = timing.J68;                 // =SUM(J44:J67) 放电量
+  var D68 = timing.D68, E68 = timing.E68, F68 = D68 + E68;
+  var G68 = timing.G68, I68 = timing.I68, J68 = timing.J68;
+  var B28 = E68, B31 = B30 * B8 / 365;
+  var B32 = I68, B33 = -Math.min.apply(null, timing.I_arr);
+  var B34 = (J68 - B25) > 0 ? (J68 - B25) : 0;
+  var B35 = B34 > 0 ? B34 / eff : 0;
+  var B36 = B32 - B35;
+  var B37 = (B28 + B31) > 0 ? (B36 / (B28 + B31)) : 0;
+  var B38 = B36 < 0 ? (B28 + B31) : (B28 + B31 - B36 - (B35 - B34));
+  var B39 = G68 > 0 ? (B38 / G68) : 0;
+  var B40 = B39 < B3 ? '未满足供电比例要求' : '满足要求';
+  var B41 = B35 - B34;
+  var B42 = B28 > 0 ? (B41 / B28) : 0;
+  var B10_calc = B35;
+  var B12 = B9 * B5 * 10000;
+  var B13 = B10_calc * B6 * 10000;
+  var B14 = B13 + B12;
+  var B15 = B4 > 0 ? (B14 / B4 * 10000 / 1000) : 0;
 
-  const B28 = E68;                         // =E68 光伏日发电量
-  const B31 = B30 * B29 / 365;            // =B30*B29/365 风电日发电量
-  // B69 = E68*365（年发电量），与Excel日均E68×365一致
-
-  const B32 = I68;                         // =I68 风光超负荷可冲电量
-  const B33 = -Math.min(...timing.I_arr); // =-MIN(I44:I67) 储能功率
-  const B34 = (J68 - B25) > 0 ? (J68 - B25) : 0;  // =IF((J68-B25)>0,J68-B25,0)
-  const B35 = B34 > 0 ? B34 / eff : 0;    // =B34/效率 储能日储存容量
-  const B36 = B32 - B35;                   // =B32-B35 弃电量
-  const B37 = (B28 + B31) > 0 ? (B36 / (B28 + B31)) : 0;  // =B36/(B28+B31) 弃电率
-  const B38 = B36 < 0 ? (B28 + B31)        // =IF(B36<0,B28+B31,B28+B31-B36-(B35-B34))
-                : (B28 + B31 - B36 - (B35 - B34));
-  const B39 = G68 > 0 ? (B38 / G68) : 0;  // =B38/G68 绿电供电占负荷比
-  const B40 = B39 < B3 ? '未满足供电比例要求' : '满足要求';  // =IF(B39<B3,"未满足","满足要求")
-  const B41 = B35 - B34;                   // =B35-B34 充放电损耗
-  const B42 = B28 > 0 ? (B41 / B28) : 0;  // =B41/B28 损耗率
-  const B10_calc = B35;                    // =B35 储能规模(反算)
-
-  // ===== 经济计算 =====
-  const B12 = B9 * 1000000 * B5 / 10000;   // =B9*1000000*B5/10000 光伏成本
-  const B13 = B10_calc * B6 * 1000000 / 10000;  // =B10*B6*1000000/10000 储能成本
-  const B14 = B13 + B12;                   // =B13+B12 总成本
-  const B15 = B4 > 0 ? (B14 / B4 * 10000 / 1000) : 0;  // =B14/B4*10000/1000 单位投资
-
-  // ===== 显示结果 =====
-  document.getElementById('B2').textContent  = fmt(B2);
-  document.getElementById('B4').textContent  = fmt(B4);
-  document.getElementById('B23').textContent = fmt(B23);
-  document.getElementById('B25').textContent = fmt(B25);
-  document.getElementById('B28').textContent = fmt(B28);
-  document.getElementById('E68').textContent = fmt(E68);
-  document.getElementById('D68').textContent = fmt(D68);
-  document.getElementById('F68').textContent = fmt(F68);
-  document.getElementById('B69').textContent = fmt(E68 * 365);  // B69=年发电量=C68*365; 用E68*365与Excel一致
-  document.getElementById('B31').textContent = fmt(B31);
-  document.getElementById('B10_calc').textContent = fmt(B10_calc);
-  document.getElementById('B32').textContent = fmt(B32);
-  document.getElementById('B33').textContent = fmt(B33);
-  document.getElementById('B34').textContent = fmt(B34);
-  document.getElementById('B35').textContent = fmt(B35);
-  document.getElementById('I68').textContent = fmt(I68);
-  document.getElementById('J68').textContent = fmt(J68);
-  document.getElementById('B36').textContent = fmt(B36);
+  var ids = ['B2','B4','B23','B25','B28','E68','D68','F68','B31','B10_calc',
+             'B32','B33','B34','B35','I68','J68','B36','B37','B38','B39',
+             'B41','B42','B12','B13','B14','B15'];
+  var vals = [B2,B4,B23,B25,B28,E68,D68,F68,B31,B10_calc,
+              B32,B33,B34,B35,I68,J68,B36,B37,B38,B39,
+              B41,B42,B12,B13,B14,B15];
+  ids.forEach(function(id, i) {
+    document.getElementById(id).textContent = fmt(vals[i]);
+  });
+  document.getElementById('B69').textContent = fmt(E68 * 365);
   document.getElementById('B37').textContent = pct(B37);
-  document.getElementById('B38').textContent = fmt(B38);
   document.getElementById('B39').textContent = pct(B39);
-  const b40El = document.getElementById('B40');
+  document.getElementById('B42').textContent = pct(B42);
+  var b40El = document.getElementById('B40');
   b40El.textContent = B40;
   b40El.className = B40 === '满足要求' ? 'result-value status-badge status-success' : 'result-value status-badge status-warning';
-  document.getElementById('B41').textContent = fmt(B41);
-  document.getElementById('B42').textContent = pct(B42);
-
-  // 经济指标
-  document.getElementById('B12').textContent = fmt(B12);
-  document.getElementById('B13').textContent = fmt(B13);
-  document.getElementById('B14').textContent = fmt(B14);
-  document.getElementById('B15').textContent = fmt(B15);
 }
 
 function generateTimingData(loadPower, loadHours, windPower, solarPower, eff) {
-  const tableBody = document.getElementById('timingTableBody');
+  var tableBody = document.getElementById('timingTableBody');
   tableBody.innerHTML = '';
-
-  const D_arr = [], E_arr = [], F_arr = [], G_arr = [], H_arr = [], I_arr = [];
-  let D68 = 0, E68 = 0, F68 = 0, G68 = 0, I68 = 0, J68 = 0;
-  const I_list = [];
-
-  for (let h = 0; h < 24; h++) {
-    const B_val = windTypicalCurve[h];    // 风电典型出力（标准化 1MW）
-    const C_val = solarTypicalCurve[h];   // 光伏典型出力（标准化 1MW，实际发电量/MW）
-
-    // D列：风电出力 = B29 × B列 / 1000 = B8 × B_val / 1000
-    const D_val = windPower * B_val / 1000;
-    // E列：光伏出力 = B26 × C列 / 1000 = B9 × C_val / 1000
-    const E_val = solarPower * C_val / 1000;
-    // F列：合计出力
-    const F_val = D_val + E_val;
-    // G列：负荷 = B22/8760 × B21 = loadHours/8760 × loadPower
-    const G_val = loadHours / 8760 * loadPower;
-    // H列：电量盈余与缺口 = F - G
-    const H_val = F_val - G_val;
-    // I列：可充电量 = IF(H>0, H, 0)
-    const I_val = H_val > 0 ? H_val : 0;
-    // J列：储能与大电网放电 = IF(H<0, -H, 0)
-    const J_val = H_val < 0 ? (-H_val) : 0;
-
-    D68 += D_val; E68 += E_val; F68 += F_val; G68 += G_val; I68 += I_val; J68 += J_val;
-    I_list.push(I_val);
-
-    D_arr.push(D_val); E_arr.push(E_val); F_arr.push(F_val);
-    G_arr.push(G_val); H_arr.push(H_val); I_arr.push(I_val);
-
-    // 填充表格行
-    const tr = document.createElement('tr');
-    tr.innerHTML = [
-      `${String(h).padStart(2,'0')}:00`,
-      B_val,
-      C_val.toFixed(2),
-      D_val.toFixed(2),
-      E_val.toFixed(2),
-      F_val.toFixed(2),
-      G_val.toFixed(2),
-      `<span class="${H_val>=0?'positive':'negative'}">${H_val>=0?'+':''}${H_val.toFixed(2)}</span>`,
-      I_val.toFixed(2),
-      J_val.toFixed(2)
-    ].map(v => `<td>${v}</td>`).join('');
+  var D68=0, E68=0, F68=0, G68=0, I68=0, J68=0;
+  var I_list = [];
+  var D_arr=[], E_arr=[], F_arr=[], G_arr=[];
+  for (var h=0; h<24; h++) {
+    var Bv = windTypicalCurve[h];
+    var Cv = solarTypicalCurve[h];
+    var Dv = windPower * Bv / 1000;
+    var Ev = solarPower * Cv / 1000;
+    var Fv = Dv + Ev;
+    var Gv = loadHours / 8760 * loadPower;
+    var Hv = Fv - Gv;
+    var Iv = Hv > 0 ? Hv : 0;
+    var Jv = Hv < 0 ? (-Hv) : 0;
+    D68+=Dv; E68+=Ev; F68+=Fv; G68+=Gv; I68+=Iv; J68+=Jv;
+    I_list.push(Iv);
+    D_arr.push(Dv); E_arr.push(Ev); F_arr.push(Fv); G_arr.push(Gv);
+    var tr = document.createElement('tr');
+    var cells = [
+      String(h).padStart(2,'0')+':00',
+      Bv,
+      Cv.toFixed(2),
+      Dv.toFixed(2),
+      Ev.toFixed(2),
+      Fv.toFixed(2),
+      Gv.toFixed(2),
+      '<span class="'+(Hv>=0?'positive':'negative')+'">'+(Hv>=0?'+':'')+Hv.toFixed(2)+'</span>',
+      Iv.toFixed(2),
+      Jv.toFixed(2)
+    ];
+    tr.innerHTML = cells.map(function(v){ return '<td>'+v+'</td>'; }).join('');
     tableBody.appendChild(tr);
   }
-
   drawTimingChart(D_arr, E_arr, F_arr, G_arr, loadPower);
-  return { D68, E68, F68, G68, I68, J68, I_arr: I_list };
+  return {D68:D68, E68:E68, F68:F68, G68:G68, I68:I68, J68:J68, I_arr:I_list};
 }
 
 function drawTimingChart(D_arr, E_arr, F_arr, G_arr, loadPower) {
-  const labels = Array.from({length:24}, (_, i) => String(i).padStart(2,'0')+':00');
-  const ctx = document.getElementById('timingChart').getContext('2d');
+  var ctx = document.getElementById('timingChart').getContext('2d');
   if (timingChart) timingChart.destroy();
   timingChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: labels,
+      labels: Array.from({length:24},function(_,i){return String(i).padStart(2,'0')+':00';}),
       datasets: [
-        { label: '风电出力 (MW)', data: D_arr, borderColor: '#007bff', backgroundColor: 'rgba(0,123,255,0.1)', borderWidth: 2, fill: true, tension: 0.4 },
-        { label: '光伏出力 (MW)', data: E_arr, borderColor: '#ffc107', backgroundColor: 'rgba(255,193,7,0.1)', borderWidth: 2, fill: true, tension: 0.4 },
-        { label: '合计出力 (MW)', data: F_arr, borderColor: '#28a745', backgroundColor: 'rgba(40,167,69,0.05)', borderWidth: 3, fill: false, tension: 0.4 },
-        { label: `负荷 ${loadPower}MW`, data: G_arr, borderColor: '#dc3545', backgroundColor: 'transparent', borderWidth: 2, borderDash: [6, 4], fill: false }
+        {label:'风电出力 (MW)', data:D_arr, borderColor:'#2563eb', backgroundColor:'rgba(37,99,235,0.10)', borderWidth:2, fill:true, tension:0.4},
+        {label:'光伏出力 (MW)', data:E_arr, borderColor:'#f59e0b', backgroundColor:'rgba(245,158,11,0.10)', borderWidth:2, fill:true, tension:0.4},
+        {label:'合计出力 (MW)', data:F_arr, borderColor:'#10b981', backgroundColor:'rgba(16,185,129,0.05)', borderWidth:3, fill:false, tension:0.4},
+        {label:'负荷 '+loadPower+'MW', data:G_arr, borderColor:'#ef4444', backgroundColor:'transparent', borderWidth:2, borderDash:[6,4], fill:false}
       ]
     },
     options: {
-      responsive: true, maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { position: 'top' },
-        tooltip: { callbacks: { label: ctx => `${ctx.dataset.label}: ${ctx.raw.toFixed(2)} MW` } }
-      },
-      scales: {
-        y: { beginAtZero: true, title: { display: true, text: '功率 (MW)' }, grid: { color: '#f0f0f0' } },
-        x: { grid: { display: false } }
+      responsive:true, maintainAspectRatio:false,
+      interaction:{mode:'index',intersect:false},
+      plugins:{legend:{position:'top',labels:{font:{size:12}}},
+               tooltip:{callbacks:{label:function(c){return c.dataset.label+': '+c.raw.toFixed(2)+' MW';}}}},
+      scales:{
+        y:{beginAtZero:true, title:{display:true,text:'功率 (MW)'}, grid:{color:'#f1f5f9'}},
+        x:{grid:{display:false}}
       }
     }
   });
 }
 
-function fmt(v) { return isNaN(v) || !isFinite(v) ? '-' : (v >= 0 ? v.toFixed(2) : v.toFixed(2)); }
-function pct(v) { return isNaN(v) || !isFinite(v) ? '-' : (v * 100).toFixed(2) + '%'; }
+function fmt(v){ return (isNaN(v)||!isFinite(v)) ? '-' : v.toFixed(2); }
+function pct(v){ return (isNaN(v)||!isFinite(v)) ? '-' : (v*100).toFixed(2)+'%'; }
 
 function resetForm() {
-  const defaults = { B1:250, B22:8760, B3:0.6, B9:850, B8:0, B30:2430, B27:1730, B5:40, B6:15, eff:0.85 };
-  Object.entries(defaults).forEach(([k, v]) => { const el = document.getElementById(k); if (el) el.value = v; });
+  var defaults = {B1:250,B22:8760,B3:0.6,B9:850,B8:0,B30:2430,B27:1730,B5:40,B6:15,eff:0.85};
+  Object.keys(defaults).forEach(function(k){
+    var el = document.getElementById(k);
+    if (el) el.value = defaults[k];
+  });
   calculate();
 }
 
