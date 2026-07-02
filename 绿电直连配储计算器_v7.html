@@ -337,6 +337,27 @@ body {
   border-bottom: 1px solid var(--border-light);
   color: var(--text-label);
 }
+
+/* 表格内曲线输入框 */
+.curve-input {
+  width: 60px;
+  padding: 4px 6px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  text-align: center;
+  background: white;
+  color: var(--text-title);
+  outline: none;
+  transition: all 0.15s;
+}
+.curve-input:focus {
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 2px rgba(99,102,241,0.15);
+}
+.curve-input:hover {
+  border-color: var(--primary);
+}
 .data-table tbody tr:hover td { background: #f9fafb; }
 .data-table tbody tr:last-child td { border-bottom: none; }
 .positive { color: var(--accent-green); font-weight: 700; }
@@ -408,13 +429,6 @@ body {
           <span class="input-unit">H</span>
         </div>
       </div>
-      <div class="input-item">
-        <div class="input-label">20:00H光伏典型出力(1MW) <span class="cell-tag">Cv[20]</span></div>
-        <div class="input-wrap">
-          <input type="number" id="solarCurve20" value="0" step="1">
-          <span class="input-unit">W</span>
-        </div>
-      </div>
     </div>
 
     <div class="input-group">
@@ -431,13 +445,6 @@ body {
         <div class="input-wrap">
           <input type="number" id="B30" value="2430" step="10">
           <span class="input-unit">H</span>
-        </div>
-      </div>
-      <div class="input-item">
-        <div class="input-label">24:00H风电典型出力(1MW) <span class="cell-tag">Bv[23]</span></div>
-        <div class="input-wrap">
-          <input type="number" id="windCurve24" value="400" step="1">
-          <span class="input-unit">W</span>
         </div>
       </div>
     </div>
@@ -670,9 +677,6 @@ function calculate() {
   var B3  = parseFloat(document.getElementById('B3').value)  || 0;
   var B9  = parseFloat(document.getElementById('B9').value)  || 0;
   var B27 = parseFloat(document.getElementById('B27').value) || 0;
-  var solarCurve20Val = parseFloat(document.getElementById('solarCurve20').value) || 0;
-  var windCurve24Val = parseFloat(document.getElementById('windCurve24').value) || 0;
-
   var B8  = parseFloat(document.getElementById('B8').value)  || 0;
   var B30 = parseFloat(document.getElementById('B30').value) || 0;
   var B5  = parseFloat(document.getElementById('B5').value)  || 0;
@@ -684,7 +688,7 @@ function calculate() {
   var B23 = B22 * B1 / 365;
   var B25 = B2 * (1 - B3) / 365;
 
-  var timing = generateTimingData(B1, B22, B8, B9, eff, solarCurve20Val, windCurve24Val);
+  var timing = generateTimingData(B1, B22, B8, B9, eff);
 
   var D68 = timing.D68, E68 = timing.E68, F68 = D68 + E68;
   var G68 = timing.G68, I68 = timing.I68, J68 = timing.J68;
@@ -717,18 +721,19 @@ function calculate() {
   b40El.className = B40 === '满足' ? 'status-success' : 'status-warning';
 }
 
-function generateTimingData(loadPower, loadHours, windPower, solarPower, eff, solarCurve20Val, windCurve24Val) {
+// Global editable curves (synced with table inputs)
+let editableWindCurve = windTypicalCurve.slice();
+let editableSolarCurve = solarTypicalCurve.slice();
+
+function generateTimingData(loadPower, loadHours, windPower, solarPower, eff) {
   var tableBody = document.getElementById('timingTableBody');
   tableBody.innerHTML = '';
   var D68=0, E68=0, F68=0, G68=0, I68=0, J68=0;
   var I_list = [], D_arr=[], E_arr=[], F_arr=[], G_arr=[];
-  // Apply user-editable curve points
-  var _windCurve = windTypicalCurve.slice(); _windCurve[23] = windCurve24Val;
-  var _solarCurve = solarTypicalCurve.slice(); _solarCurve[20] = solarCurve20Val;
 
   for (var h=0; h<24; h++) {
-    var Bv = _windCurve[h];
-    var Cv = _solarCurve[h];
+    var Bv = editableWindCurve[h];
+    var Cv = editableSolarCurve[h];
     var Dv = windPower * Bv / 1000;
     var Ev = solarPower * Cv / 1000;
     var Fv = Dv + Ev;
@@ -744,8 +749,8 @@ function generateTimingData(loadPower, loadHours, windPower, solarPower, eff, so
     var tr = document.createElement('tr');
     tr.innerHTML = [
       '<td>'+String(h).padStart(2,'0')+':00</td>',
-      '<td>'+Bv+'</td>',
-      '<td>'+Cv.toFixed(2)+'</td>',
+      '<td><input type="number" class="curve-input" data-hour="'+h+'" data-type="wind" value="'+Bv+'" step="1" onchange="updateCurve(this)"></td>',
+      '<td><input type="number" class="curve-input" data-hour="'+h+'" data-type="solar" value="'+Cv.toFixed(2)+'" step="0.01" onchange="updateCurve(this)"></td>',
       '<td>'+Dv.toFixed(2)+'</td>',
       '<td>'+Ev.toFixed(2)+'</td>',
       '<td>'+Fv.toFixed(2)+'</td>',
@@ -788,11 +793,27 @@ function fmt(v){ return (isNaN(v)||!isFinite(v)) ? '-' : v.toFixed(2); }
 function pct(v){ return (isNaN(v)||!isFinite(v)) ? '-' : (v*100).toFixed(2)+'%'; }
 
 function resetForm() {
-  var defaults = {B1:250,B22:8760,B3:0.6,B9:850,B27:1730,B8:0,B30:2430,B5:40,B6:15,eff:0.85,solarCurve20:0,windCurve24:400};
+  var defaults = {B1:250,B22:8760,B3:0.6,B9:850,B27:1730,B8:0,B30:2430,B5:40,B6:15,eff:0.85};
+  // Reset editable curves to defaults
+  editableWindCurve = windTypicalCurve.slice();
+  editableSolarCurve = solarTypicalCurve.slice();
   Object.keys(defaults).forEach(function(k){
     var el = document.getElementById(k);
     if (el) el.value = defaults[k];
   });
+  calculate();
+}
+
+// Update curve value from table input and recalculate
+function updateCurve(input) {
+  var hour = parseInt(input.dataset.hour);
+  var type = input.dataset.type;
+  var val = parseFloat(input.value) || 0;
+  if (type === 'wind') {
+    editableWindCurve[hour] = val;
+  } else {
+    editableSolarCurve[hour] = val;
+  }
   calculate();
 }
 
