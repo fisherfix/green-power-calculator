@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>绿电直连配储计算器 - 终极版</title>
+    <title>缁跨數鐩磋繛閰嶅偍璁＄畻鍣?- 缁堟瀬鐗?/title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,266 +53,266 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>⚡ 绿电直连配储计算器 - 终极版</h1>
-            <p>完整复现飞书表格公式 v4.0 | 全量输入/输出参数自查补全</p>
+            <h1>鈿?缁跨數鐩磋繛閰嶅偍璁＄畻鍣?- 缁堟瀬鐗?/h1>
+            <p>瀹屾暣澶嶇幇椋炰功琛ㄦ牸鍏紡 v4.0 | 鍏ㄩ噺杈撳叆/杈撳嚭鍙傛暟鑷煡琛ュ叏</p>
         </div>
         
         <div class="content">
-            <!-- 输入参数区 -->
+            <!-- 杈撳叆鍙傛暟鍖?-->
             <div class="section input-section">
-                <h2>📝 输入参数</h2>
+                <h2>馃摑 杈撳叆鍙傛暟</h2>
                 
-                <div class="subsection-title">基础参数</div>
+                <div class="subsection-title">鍩虹鍙傛暟</div>
                 <div class="input-group">
-                    <label>负荷功率（含同时率）B1</label>
+                    <label>璐熻嵎鍔熺巼锛堝惈鍚屾椂鐜囷級B1</label>
                     <input type="number" id="B1" value="120" step="10">
                     <span class="unit">MW</span>
                 </div>
                 <div class="input-group">
-                    <label>年用电时长 B22</label>
+                    <label>骞寸敤鐢垫椂闀?B22</label>
                     <input type="number" id="B22" value="8760" step="100">
                     <span class="unit">H</span>
                 </div>
                 <div class="input-group">
-                    <label>自发自用比例 B3</label>
+                    <label>鑷彂鑷敤姣斾緥 B3</label>
                     <input type="number" id="B3" value="0.6" step="0.1" min="0" max="1">
                     <span class="unit">-</span>
                 </div>
                 
-                <div class="subsection-title">光伏装机</div>
+                <div class="subsection-title">鍏変紡瑁呮満</div>
                 <div class="input-group">
-                    <label>光伏功率 B9</label>
+                    <label>鍏変紡鍔熺巼 B9</label>
                     <input type="number" id="B9" value="0" step="10">
                     <span class="unit">MW</span>
                 </div>
                 <div class="input-group">
-                    <label>光伏利用小时 B7</label>
+                    <label>鍏変紡鍒╃敤灏忔椂 B7</label>
                     <input type="number" id="B7" value="2000" step="50">
                     <span class="unit">H</span>
-                    <div class="formula-hint">影响年发电量估算</div>
+                    <div class="formula-hint">褰卞搷骞村彂鐢甸噺浼扮畻</div>
                 </div>
                 
-                <div class="subsection-title">风电装机</div>
+                <div class="subsection-title">椋庣數瑁呮満</div>
                 <div class="input-group">
-                    <label>风电功率 B8</label>
+                    <label>椋庣數鍔熺巼 B8</label>
                     <input type="number" id="B8" value="450" step="10">
                     <span class="unit">MW</span>
                 </div>
                 <div class="input-group">
-                    <label>风电利用小时 B30</label>
+                    <label>椋庣數鍒╃敤灏忔椂 B30</label>
                     <input type="number" id="B30" value="2400" step="50">
                     <span class="unit">H</span>
                 </div>
                 
-                <div class="subsection-title">储能参数</div>
+                <div class="subsection-title">鍌ㄨ兘鍙傛暟</div>
                 <div class="input-group">
-                    <label>充放电效率</label>
+                    <label>鍏呮斁鐢垫晥鐜?/label>
                     <input type="number" id="eff" value="0.85" step="0.05" min="0" max="1">
                     <span class="unit">-</span>
                 </div>
                 <div class="input-group">
-                    <label>储能循环次数 B17</label>
+                    <label>鍌ㄨ兘寰幆娆℃暟 B17</label>
                     <input type="number" id="B17" value="65" step="5">
-                    <span class="unit">次/年</span>
-                    <div class="formula-hint">C17 = B17×0.85</div>
+                    <span class="unit">娆?骞?/span>
+                    <div class="formula-hint">C17 = B17脳0.85</div>
                 </div>
                 
-                <div class="subsection-title">经济参数（选填）</div>
+                <div class="subsection-title">缁忔祹鍙傛暟锛堥€夊～锛?/div>
                 <div class="input-group">
-                    <label>光伏单位投资 B5</label>
+                    <label>鍏変紡鍗曚綅鎶曡祫 B5</label>
                     <input type="number" id="B5" value="0" step="0.1" placeholder="0">
-                    <span class="unit">元/W</span>
+                    <span class="unit">鍏?W</span>
                 </div>
                 <div class="input-group">
-                    <label>储能单位投资 B6</label>
+                    <label>鍌ㄨ兘鍗曚綅鎶曡祫 B6</label>
                     <input type="number" id="B6" value="0" step="0.1" placeholder="0">
-                    <span class="unit">元/Wh</span>
+                    <span class="unit">鍏?Wh</span>
                 </div>
                 
                 <div class="button-group">
-                    <button class="btn-calculate" onclick="calculate()">🔢 开始计算</button>
-                    <button class="btn-reset" onclick="resetForm()">🔄 重置</button>
+                    <button class="btn-calculate" onclick="calculate()">馃敘 寮€濮嬭绠?/button>
+                    <button class="btn-reset" onclick="resetForm()">馃攧 閲嶇疆</button>
                 </div>
             </div>
             
-            <!-- 计算结果区 -->
+            <!-- 璁＄畻缁撴灉鍖?-->
             <div class="section output-section">
-                <h2>📊 计算结果</h2>
+                <h2>馃搳 璁＄畻缁撴灉</h2>
                 
-                <!-- 第一行：核心指标 -->
+                <!-- 绗竴琛岋細鏍稿績鎸囨爣 -->
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:15px;">
                     <div class="result-card">
-                        <div class="result-label">总电量 B2</div>
-                        <div class="result-value"><span id="B2">0</span><span class="result-unit">MWh/年</span></div>
-                        <div class="formula-hint">=B1×8760</div>
+                        <div class="result-label">鎬荤數閲?B2</div>
+                        <div class="result-value"><span id="B2">0</span><span class="result-unit">MWh/骞?/span></div>
+                        <div class="formula-hint">=B1脳8760</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">自发自用电量 B4</div>
-                        <div class="result-value"><span id="B4">0</span><span class="result-unit">MWh/年</span></div>
-                        <div class="formula-hint">=B3×B2</div>
+                        <div class="result-label">鑷彂鑷敤鐢甸噺 B4</div>
+                        <div class="result-value"><span id="B4">0</span><span class="result-unit">MWh/骞?/span></div>
+                        <div class="formula-hint">=B3脳B2</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">负荷日用电量 B23</div>
-                        <div class="result-value"><span id="B23">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B22×B21/365</div>
+                        <div class="result-label">璐熻嵎鏃ョ敤鐢甸噺 B23</div>
+                        <div class="result-value"><span id="B23">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="formula-hint">=B22脳B21/365</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">大电网日供电量 B25</div>
-                        <div class="result-value"><span id="B25">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B2×(1-B24)/365</div>
+                        <div class="result-label">澶х數缃戞棩渚涚數閲?B25</div>
+                        <div class="result-value"><span id="B25">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="formula-hint">=B2脳(1-B24)/365</div>
                     </div>
                 </div>
                 
-                <div class="subsection-title">新能源发电</div>
+                <div class="subsection-title">鏂拌兘婧愬彂鐢?/div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
                     <div class="result-card">
-                        <div class="result-label">时序光伏出力和 B28</div>
-                        <div class="result-value"><span id="B28">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=Σ(E44:E67)</div>
+                        <div class="result-label">鏃跺簭鍏変紡鍑哄姏鍜?B28</div>
+                        <div class="result-value"><span id="B28">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="formula-hint">=危(E44:E67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">时序风电出力和 D68</div>
-                        <div class="result-value"><span id="D68">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=Σ(D44:D67)</div>
+                        <div class="result-label">鏃跺簭椋庣數鍑哄姏鍜?D68</div>
+                        <div class="result-value"><span id="D68">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="formula-hint">=危(D44:D67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">新能源总发电量 F68</div>
-                        <div class="result-value"><span id="F68">0</span><span class="result-unit">MWh/日</span></div>
+                        <div class="result-label">鏂拌兘婧愭€诲彂鐢甸噺 F68</div>
+                        <div class="result-value"><span id="F68">0</span><span class="result-unit">MWh/鏃?/span></div>
                         <div class="formula-hint">=D68+E68</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">光伏典型出力和 C68</div>
-                        <div class="result-value"><span id="C68">0</span><span class="result-unit">(归一)</span></div>
-                        <div class="formula-hint">=Σ(C44:C67)</div>
+                        <div class="result-label">鍏変紡鍏稿瀷鍑哄姏鍜?C68</div>
+                        <div class="result-value"><span id="C68">0</span><span class="result-unit">(褰掍竴)</span></div>
+                        <div class="formula-hint">=危(C44:C67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">光伏年发电量 B69</div>
-                        <div class="result-value"><span id="B69">0</span><span class="result-unit">MWh/年</span></div>
-                        <div class="formula-hint">=E68×365</div>
+                        <div class="result-label">鍏変紡骞村彂鐢甸噺 B69</div>
+                        <div class="result-value"><span id="B69">0</span><span class="result-unit">MWh/骞?/span></div>
+                        <div class="formula-hint">=E68脳365</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">风电日发电量 B31</div>
-                        <div class="result-value"><span id="B31">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B30×B29/365</div>
+                        <div class="result-label">椋庣數鏃ュ彂鐢甸噺 B31</div>
+                        <div class="result-value"><span id="B31">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="formula-hint">=B30脳B29/365</div>
                     </div>
                 </div>
                 
-                <div class="subsection-title">储能核心指标 ⭐</div>
+                <div class="subsection-title">鍌ㄨ兘鏍稿績鎸囨爣 猸?/div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
                     <div class="result-card highlight-card">
-                        <div class="result-label">储能规模（反算）B10</div>
+                        <div class="result-label">鍌ㄨ兘瑙勬ā锛堝弽绠楋級B10</div>
                         <div class="result-value"><span id="B10_calc">0</span><span class="result-unit">MWh</span></div>
                         <div class="formula-hint">=B35</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">时序总盈余 I68</div>
-                        <div class="result-value"><span id="I68">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=Σ(I44:I67)</div>
+                        <div class="result-label">鏃跺簭鎬荤泩浣?I68</div>
+                        <div class="result-value"><span id="I68">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="formula-hint">=危(I44:I67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">时序总放电 J68</div>
-                        <div class="result-value"><span id="J68">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=Σ(J44:J67)</div>
+                        <div class="result-label">鏃跺簭鎬绘斁鐢?J68</div>
+                        <div class="result-value"><span id="J68">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="formula-hint">=危(J44:J67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">储能可储存 B32</div>
-                        <div class="result-value"><span id="B32">0</span><span class="result-unit">MWh/日</span></div>
+                        <div class="result-label">鍌ㄨ兘鍙偍瀛?B32</div>
+                        <div class="result-value"><span id="B32">0</span><span class="result-unit">MWh/鏃?/span></div>
                         <div class="formula-hint">=I68</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">储能年可储 C69</div>
-                        <div class="result-value"><span id="C69">0</span><span class="result-unit">MWh/年</span></div>
-                        <div class="formula-hint">=I68×365</div>
+                        <div class="result-label">鍌ㄨ兘骞村彲鍌?C69</div>
+                        <div class="result-value"><span id="C69">0</span><span class="result-unit">MWh/骞?/span></div>
+                        <div class="formula-hint">=I68脳365</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">最大盈余 B33</div>
+                        <div class="result-label">鏈€澶х泩浣?B33</div>
                         <div class="result-value"><span id="B33">0</span><span class="result-unit">MWh</span></div>
                         <div class="formula-hint">=-MIN(I44:I67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">储能日放电容量 B34</div>
-                        <div class="result-value"><span id="B34">0</span><span class="result-unit">MWh/日</span></div>
+                        <div class="result-label">鍌ㄨ兘鏃ユ斁鐢靛閲?B34</div>
+                        <div class="result-value"><span id="B34">0</span><span class="result-unit">MWh/鏃?/span></div>
                         <div class="formula-hint">=IF((J68-B25)>0,J68-B25,0)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">储能实际充电量 B35</div>
-                        <div class="result-value"><span id="B35">0</span><span class="result-unit">MWh/日</span></div>
+                        <div class="result-label">鍌ㄨ兘瀹為檯鍏呯數閲?B35</div>
+                        <div class="result-value"><span id="B35">0</span><span class="result-unit">MWh/鏃?/span></div>
                         <div class="formula-hint">=B34/0.85</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">弃电量 B36</div>
-                        <div class="result-value"><span id="B36">0</span><span class="result-unit">MWh/日</span></div>
+                        <div class="result-label">寮冪數閲?B36</div>
+                        <div class="result-value"><span id="B36">0</span><span class="result-unit">MWh/鏃?/span></div>
                         <div class="formula-hint">=B32-B35</div>
                     </div>
                 </div>
                 
-                <div class="subsection-title">消纳与损耗指标</div>
+                <div class="subsection-title">娑堢撼涓庢崯鑰楁寚鏍?/div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
                     <div class="result-card">
-                        <div class="result-label">弃电率 B37</div>
+                        <div class="result-label">寮冪數鐜?B37</div>
                         <div class="result-value"><span id="B37">0</span><span class="result-unit">%</span></div>
                         <div class="formula-hint">=B36/(B28+B31)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">绿电终端消纳量 B38</div>
-                        <div class="result-value"><span id="B38">0</span><span class="result-unit">MWh/日</span></div>
+                        <div class="result-label">缁跨數缁堢娑堢撼閲?B38</div>
+                        <div class="result-value"><span id="B38">0</span><span class="result-unit">MWh/鏃?/span></div>
                         <div class="formula-hint">=IF(B36&lt;0,B28+B31,B28+B31-B36-(B35-B34))</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">消纳比例 B39</div>
+                        <div class="result-label">娑堢撼姣斾緥 B39</div>
                         <div class="result-value"><span id="B39">0</span><span class="result-unit">%</span></div>
                         <div class="formula-hint">=B38/G68</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">供电比例判断 B40</div>
+                        <div class="result-label">渚涚數姣斾緥鍒ゆ柇 B40</div>
                         <div class="result-value" style="font-size:14px"><span id="B40">-</span></div>
-                        <div class="formula-hint">=IF(B39&lt;B3,"未满足","满足")</div>
+                        <div class="formula-hint">=IF(B39&lt;B3,"鏈弧瓒?,"婊¤冻")</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">储能损耗 B41</div>
-                        <div class="result-value"><span id="B41">0</span><span class="result-unit">MWh/日</span></div>
+                        <div class="result-label">鍌ㄨ兘鎹熻€?B41</div>
+                        <div class="result-value"><span id="B41">0</span><span class="result-unit">MWh/鏃?/span></div>
                         <div class="formula-hint">=B35-B34</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">储能损耗率 B42</div>
+                        <div class="result-label">鍌ㄨ兘鎹熻€楃巼 B42</div>
                         <div class="result-value"><span id="B42">0</span><span class="result-unit">%</span></div>
                         <div class="formula-hint">=B41/B28</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">储能等效循环 C17</div>
-                        <div class="result-value"><span id="C17">0</span><span class="result-unit">次/年</span></div>
-                        <div class="formula-hint">=B17×0.85</div>
+                        <div class="result-label">鍌ㄨ兘绛夋晥寰幆 C17</div>
+                        <div class="result-value"><span id="C17">0</span><span class="result-unit">娆?骞?/span></div>
+                        <div class="formula-hint">=B17脳0.85</div>
                     </div>
                 </div>
                 
-                <div class="subsection-title">经济指标（填B5/B6时显示）</div>
+                <div class="subsection-title">缁忔祹鎸囨爣锛堝～B5/B6鏃舵樉绀猴級</div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:10px;" id="investmentSection" style="display:none">
                     <div class="result-card">
-                        <div class="result-label">光伏投资 B12</div>
-                        <div class="result-value"><span id="B12">-</span><span class="result-unit">万元</span></div>
-                        <div class="formula-hint">=B9×10⁶×B5/10⁴</div>
+                        <div class="result-label">鍏変紡鎶曡祫 B12</div>
+                        <div class="result-value"><span id="B12">-</span><span class="result-unit">涓囧厓</span></div>
+                        <div class="formula-hint">=B9脳10鈦睹桞5/10鈦?/div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">储能投资 B13</div>
-                        <div class="result-value"><span id="B13">-</span><span class="result-unit">万元</span></div>
-                        <div class="formula-hint">=B10×B6×10⁶/10⁴</div>
+                        <div class="result-label">鍌ㄨ兘鎶曡祫 B13</div>
+                        <div class="result-value"><span id="B13">-</span><span class="result-unit">涓囧厓</span></div>
+                        <div class="formula-hint">=B10脳B6脳10鈦?10鈦?/div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">总投资 B14</div>
-                        <div class="result-value"><span id="B14">-</span><span class="result-unit">万元</span></div>
+                        <div class="result-label">鎬绘姇璧?B14</div>
+                        <div class="result-value"><span id="B14">-</span><span class="result-unit">涓囧厓</span></div>
                         <div class="formula-hint">=B13+B12</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">单位投资 B15</div>
-                        <div class="result-value"><span id="B15">-</span><span class="result-unit">元/kWh</span></div>
-                        <div class="formula-hint">=B14/B4×10000/1000</div>
+                        <div class="result-label">鍗曚綅鎶曡祫 B15</div>
+                        <div class="result-value"><span id="B15">-</span><span class="result-unit">鍏?kWh</span></div>
+                        <div class="formula-hint">=B14/B4脳10000/1000</div>
                     </div>
                 </div>
             </div>
             
-            <!-- 时序模拟区 -->
+            <!-- 鏃跺簭妯℃嫙鍖?-->
             <div class="section timing-section full-width">
-                <h2>⏰ 24小时时序模拟</h2>
+                <h2>鈴?24灏忔椂鏃跺簭妯℃嫙</h2>
                 <div class="chart-container">
                     <canvas id="timingChart" height="280"></canvas>
                 </div>
@@ -320,16 +320,16 @@
                     <table class="timing-table">
                         <thead>
                             <tr>
-                                <th>时间</th>
-                                <th>B:风电典型<br>(1MW)</th>
-                                <th>C:光伏典型<br>(1MW)</th>
-                                <th>D:风电<br>出力(MW)</th>
-                                <th>E:光伏<br>出力(MW)</th>
-                                <th>F:合计<br>出力(MW)</th>
-                                <th>G:负荷<br>(MW)</th>
-                                <th>H:盈余<br>/缺口</th>
-                                <th>I:可储</th>
-                                <th>J:放电</th>
+                                <th>鏃堕棿</th>
+                                <th>B:椋庣數鍏稿瀷<br>(1MW)</th>
+                                <th>C:鍏変紡鍏稿瀷<br>(1MW)</th>
+                                <th>D:椋庣數<br>鍑哄姏(MW)</th>
+                                <th>E:鍏変紡<br>鍑哄姏(MW)</th>
+                                <th>F:鍚堣<br>鍑哄姏(MW)</th>
+                                <th>G:璐熻嵎<br>(MW)</th>
+                                <th>H:鐩堜綑<br>/缂哄彛</th>
+                                <th>I:鍙偍</th>
+                                <th>J:鏀剧數</th>
                             </tr>
                         </thead>
                         <tbody id="timingTableBody"></tbody>
@@ -340,8 +340,7 @@
     </div>
     
     <script>
-        // 24小时典型出力数据（2400H风电/2000H光伏）
-        const windTypicalCurve = [400,420,450,440,410,380,330,250,180,120,100,110,130,150,160,150,170,200,260,320,360,380,390,400];
+        // 24灏忔椂鍏稿瀷鍑哄姏鏁版嵁锛?400H椋庣數/2000H鍏変紡锛?        const windTypicalCurve = [400,420,450,440,410,380,330,250,180,120,100,110,130,150,160,150,170,200,260,320,360,380,390,400];
         const solarTypicalCurve = [0,0,0,0,0,0,0,8,40,153,356,529,644,688,672,600,490,344,152,47,11,0,0,0];
         
         let timingChart = null;
@@ -389,7 +388,7 @@
             const B37 = (B28 + B31) > 0 ? (B36 / (B28 + B31) * 100) : 0;
             const B38 = B36 < 0 ? (B28 + B31) : (B28 + B31 - B36 - (B35 - B34));
             const B39 = G68 > 0 ? (B38 / G68 * 100) : 0;
-            const B40 = B39 < (B3 * 100) ? "未满足供电比例要求" : "满足要求";
+            const B40 = B39 < (B3 * 100) ? "鏈弧瓒充緵鐢垫瘮渚嬭姹? : "婊¤冻瑕佹眰";
             const B41 = B35 - B34;
             const B42 = B28 > 0 ? (B41 / B28 * 100) : 0;
             const B10_calc = B35;
@@ -483,16 +482,16 @@
                 data: {
                     labels: labels,
                     datasets: [
-                        { label:'风电出力', data:windData, borderColor:'rgba(0,123,255,1)', backgroundColor:'rgba(0,123,255,0.1)', borderWidth:2, fill:true },
-                        { label:'光伏出力', data:solarData, borderColor:'rgba(255,193,7,1)', backgroundColor:'rgba(255,193,7,0.1)', borderWidth:2, fill:true },
-                        { label:'合计出力', data:totalData, borderColor:'rgba(40,167,69,1)', backgroundColor:'rgba(40,167,69,0.1)', borderWidth:3, fill:false },
-                        { label:'负荷', data:loadData, borderColor:'rgba(220,53,69,1)', borderWidth:2, borderDash:[5,5], fill:false }
+                        { label:'椋庣數鍑哄姏', data:windData, borderColor:'rgba(0,123,255,1)', backgroundColor:'rgba(0,123,255,0.1)', borderWidth:2, fill:true },
+                        { label:'鍏変紡鍑哄姏', data:solarData, borderColor:'rgba(255,193,7,1)', backgroundColor:'rgba(255,193,7,0.1)', borderWidth:2, fill:true },
+                        { label:'鍚堣鍑哄姏', data:totalData, borderColor:'rgba(40,167,69,1)', backgroundColor:'rgba(40,167,69,0.1)', borderWidth:3, fill:false },
+                        { label:'璐熻嵎', data:loadData, borderColor:'rgba(220,53,69,1)', borderWidth:2, borderDash:[5,5], fill:false }
                     ]
                 },
                 options: {
                     responsive:true, maintainAspectRatio:false,
-                    plugins:{ title:{display:true,text:'24小时新能源出力与负荷匹配',font:{size:16}}, legend:{position:'top'} },
-                    scales:{ y:{beginAtZero:true,title:{display:true,text:'功率 (MW)'}}, x:{title:{display:true,text:'时间'}} }
+                    plugins:{ title:{display:true,text:'24灏忔椂鏂拌兘婧愬嚭鍔涗笌璐熻嵎鍖归厤',font:{size:16}}, legend:{position:'top'} },
+                    scales:{ y:{beginAtZero:true,title:{display:true,text:'鍔熺巼 (MW)'}}, x:{title:{display:true,text:'鏃堕棿'}} }
                 }
             });
         }
@@ -549,311 +548,6 @@
         .highlight-card { background: linear-gradient(135deg, #fff3cd, #ffeeba) !important; border: 2px solid #ffc107; }
         .highlight-card .result-value { color: #856404; font-size: 22px; }
     </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>⚡ 绿电直连配储计算器 - 终极版</h1>
-            <p>完整复现飞书表格公式 v4.0 | 全量输入/输出参数自查补全</p>
-        </div>
-        
-        <div class="content">
-            <!-- 输入参数区 -->
-            <div class="section input-section">
-                <h2>📝 输入参数</h2>
-                
-                <div class="subsection-title">基础参数</div>
-                <div class="input-group">
-                    <label>负荷功率（含同时率）B1</label>
-                    <input type="number" id="B1" value="120" step="10">
-                    <span class="unit">MW</span>
-                </div>
-                <div class="input-group">
-                    <label>年用电时长 B22</label>
-                    <input type="number" id="B22" value="8760" step="100">
-                    <span class="unit">H</span>
-                </div>
-                <div class="input-group">
-                    <label>自发自用比例 B3</label>
-                    <input type="number" id="B3" value="0.6" step="0.1" min="0" max="1">
-                    <span class="unit">-</span>
-                </div>
-                
-                <div class="subsection-title">光伏装机</div>
-                <div class="input-group">
-                    <label>光伏功率 B9</label>
-                    <input type="number" id="B9" value="0" step="10">
-                    <span class="unit">MW</span>
-                </div>
-                <div class="input-group">
-                    <label>光伏利用小时 B7</label>
-                    <input type="number" id="B7" value="2000" step="50">
-                    <span class="unit">H</span>
-                    <div class="formula-hint">影响年发电量估算</div>
-                </div>
-                
-                <div class="subsection-title">风电装机</div>
-                <div class="input-group">
-                    <label>风电功率 B8</label>
-                    <input type="number" id="B8" value="450" step="10">
-                    <span class="unit">MW</span>
-                </div>
-                <div class="input-group">
-                    <label>风电利用小时 B30</label>
-                    <input type="number" id="B30" value="2400" step="50">
-                    <span class="unit">H</span>
-                </div>
-                
-                <div class="subsection-title">储能参数</div>
-                <div class="input-group">
-                    <label>充放电效率</label>
-                    <input type="number" id="eff" value="0.85" step="0.05" min="0" max="1">
-                    <span class="unit">-</span>
-                </div>
-                <div class="input-group">
-                    <label>储能循环次数 B17</label>
-                    <input type="number" id="B17" value="65" step="5">
-                    <span class="unit">次/年</span>
-                    <div class="formula-hint">C17 = B17×0.85</div>
-                </div>
-                
-                <div class="subsection-title">经济参数（选填）</div>
-                <div class="input-group">
-                    <label>光伏单位投资 B5</label>
-                    <input type="number" id="B5" value="0" step="0.1" placeholder="0">
-                    <span class="unit">元/W</span>
-                </div>
-                <div class="input-group">
-                    <label>储能单位投资 B6</label>
-                    <input type="number" id="B6" value="0" step="0.1" placeholder="0">
-                    <span class="unit">元/Wh</span>
-                </div>
-                
-                <div class="button-group">
-                    <button class="btn-calculate" onclick="calculate()">🔢 开始计算</button>
-                    <button class="btn-reset" onclick="resetForm()">🔄 重置</button>
-                </div>
-            </div>
-            
-            <!-- 计算结果区 -->
-            <div class="section output-section">
-                <h2>📊 计算结果</h2>
-                
-                <!-- 第一行：核心指标 -->
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:15px;">
-                    <div class="result-card">
-                        <div class="result-label">总电量 B2</div>
-                        <div class="result-value"><span id="B2">0</span><span class="result-unit">MWh/年</span></div>
-                        <div class="formula-hint">=B1×8760</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">自发自用电量 B4</div>
-                        <div class="result-value"><span id="B4">0</span><span class="result-unit">MWh/年</span></div>
-                        <div class="formula-hint">=B3×B2</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">负荷日用电量 B23</div>
-                        <div class="result-value"><span id="B23">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B22×B21/365</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">大电网日供电量 B25</div>
-                        <div class="result-value"><span id="B25">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B2×(1-B24)/365</div>
-                    </div>
-                </div>
-                
-                <div class="subsection-title">新能源发电</div>
-                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
-                    <div class="result-card">
-                        <div class="result-label">时序光伏出力和 B28</div>
-                        <div class="result-value"><span id="B28">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=Σ(E44:E67)</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">时序风电出力和 D68</div>
-                        <div class="result-value"><span id="D68">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=Σ(D44:D67)</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">新能源总发电量 F68</div>
-                        <div class="result-value"><span id="F68">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=D68+E68</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">光伏典型出力和 C68</div>
-                        <div class="result-value"><span id="C68">0</span><span class="result-unit">(归一)</span></div>
-                        <div class="formula-hint">=Σ(C44:C67)</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">光伏年发电量 B69</div>
-                        <div class="result-value"><span id="B69">0</span><span class="result-unit">MWh/年</span></div>
-                        <div class="formula-hint">=E68×365</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">风电日发电量 B31</div>
-                        <div class="result-value"><span id="B31">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B30×B29/365</div>
-                    </div>
-                </div>
-                
-                <div class="subsection-title">储能核心指标 ⭐</div>
-                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
-                    <div class="result-card highlight-card">
-                        <div class="result-label">储能规模（反算）B10</div>
-                        <div class="result-value"><span id="B10_calc">0</span><span class="result-unit">MWh</span></div>
-                        <div class="formula-hint">=B35</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">时序总盈余 I68</div>
-                        <div class="result-value"><span id="I68">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=Σ(I44:I67)</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">时序总放电 J68</div>
-                        <div class="result-value"><span id="J68">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=Σ(J44:J67)</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">储能可储存 B32</div>
-                        <div class="result-value"><span id="B32">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=I68</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">储能年可储 C69</div>
-                        <div class="result-value"><span id="C69">0</span><span class="result-unit">MWh/年</span></div>
-                        <div class="formula-hint">=I68×365</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">最大盈余 B33</div>
-                        <div class="result-value"><span id="B33">0</span><span class="result-unit">MWh</span></div>
-                        <div class="formula-hint">=-MIN(I44:I67)</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">储能日放电容量 B34</div>
-                        <div class="result-value"><span id="B34">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=IF((J68-B25)>0,J68-B25,0)</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">储能实际充电量 B35</div>
-                        <div class="result-value"><span id="B35">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B34/0.85</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">弃电量 B36</div>
-                        <div class="result-value"><span id="B36">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B32-B35</div>
-                    </div>
-                </div>
-                
-                <div class="subsection-title">消纳与损耗指标</div>
-                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
-                    <div class="result-card">
-                        <div class="result-label">弃电率 B37</div>
-                        <div class="result-value"><span id="B37">0</span><span class="result-unit">%</span></div>
-                        <div class="formula-hint">=B36/(B28+B31)</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">绿电终端消纳量 B38</div>
-                        <div class="result-value"><span id="B38">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=IF(B36&lt;0,B28+B31,B28+B31-B36-(B35-B34))</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">消纳比例 B39</div>
-                        <div class="result-value"><span id="B39">0</span><span class="result-unit">%</span></div>
-                        <div class="formula-hint">=B38/G68</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">供电比例判断 B40</div>
-                        <div class="result-value" style="font-size:14px"><span id="B40">-</span></div>
-                        <div class="formula-hint">=IF(B39&lt;B3,"未满足","满足")</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">储能损耗 B41</div>
-                        <div class="result-value"><span id="B41">0</span><span class="result-unit">MWh/日</span></div>
-                        <div class="formula-hint">=B35-B34</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">储能损耗率 B42</div>
-                        <div class="result-value"><span id="B42">0</span><span class="result-unit">%</span></div>
-                        <div class="formula-hint">=B41/B28</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">储能等效循环 C17</div>
-                        <div class="result-value"><span id="C17">0</span><span class="result-unit">次/年</span></div>
-                        <div class="formula-hint">=B17×0.85</div>
-                    </div>
-                </div>
-                
-                <div class="subsection-title">经济指标（填B5/B6时显示）</div>
-                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:10px;" id="investmentSection" style="display:none">
-                    <div class="result-card">
-                        <div class="result-label">光伏投资 B12</div>
-                        <div class="result-value"><span id="B12">-</span><span class="result-unit">万元</span></div>
-                        <div class="formula-hint">=B9×10⁶×B5/10⁴</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">储能投资 B13</div>
-                        <div class="result-value"><span id="B13">-</span><span class="result-unit">万元</span></div>
-                        <div class="formula-hint">=B10×B6×10⁶/10⁴</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">总投资 B14</div>
-                        <div class="result-value"><span id="B14">-</span><span class="result-unit">万元</span></div>
-                        <div class="formula-hint">=B13+B12</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">单位投资 B15</div>
-                        <div class="result-value"><span id="B15">-</span><span class="result-unit">元/kWh</span></div>
-                        <div class="formula-hint">=B14/B4×10000/1000</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- 时序模拟区 -->
-            <div class="section timing-section full-width">
-                <h2>⏰ 24小时时序模拟</h2>
-                <div class="chart-container">
-                    <canvas id="timingChart" height="280"></canvas>
-                </div>
-                <div style="margin-top: 20px; overflow-x: auto; max-height: 450px;">
-                    <table class="timing-table">
-                        <thead>
-                            <tr>
-                                <th>时间</th>
-                                <th>B:风电典型<br>(1MW)</th>
-                                <th>C:光伏典型<br>(1MW)</th>
-                                <th>D:风电<br>出力(MW)</th>
-                                <th>E:光伏<br>出力(MW)</th>
-                                <th>F:合计<br>出力(MW)</th>
-                                <th>G:负荷<br>(MW)</th>
-                                <th>H:盈余<br>/缺口</th>
-                                <th>I:可储</th>
-                                <th>J:放电</th>
-                            </tr>
-                        </thead>
-                        <tbody id="timingTableBody"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        // 24小时典型出力数据（2400H风电/2000H光伏）
-        const windTypicalCurve = [400,420,450,440,410,380,330,250,180,120,100,110,130,150,160,150,170,200,260,320,360,380,390,400];
-        const solarTypicalCurve = [0,0,0,0,0,0,0,8,40,153,356,529,644,688,672,600,490,344,152,47,11,0,0,0];
-        
-        let timingChart = null;
-        
-        
-                function resetForm() {
-            const fields = {B1:120, B22:8760, B3:0.6, B9:0, B7:2000, B8:450, B30:2400, B5:0, B6:0, eff:0.85, B17:65};
-            Object.entries(fields).forEach(([k,v])=>document.getElementById(k).value=v);
-            calculate();
-        }
-        
-        window.onload = calculate;
-    </script>
+
 </body>
 </html>
