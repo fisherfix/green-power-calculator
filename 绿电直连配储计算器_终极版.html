@@ -402,7 +402,7 @@
                     <div class="result-card">
                         <div class="result-label">总电量 <span class="code">B2</span></div>
                         <div class="result-value"><span id="B2">0</span><span class="unit">MWh/年</span></div>
-                        <div class="result-formula">=B1×8760</div>
+                        <div class="result-formula">=B1×B22</div>
                     </div>
                     <div class="result-card">
                         <div class="result-label">自发自用电量 <span class="code">B4</span></div>
@@ -412,7 +412,7 @@
                     <div class="result-card">
                         <div class="result-label">负荷日用电量 <span class="code">B23</span></div>
                         <div class="result-value"><span id="B23">0</span><span class="unit">MWh/日</span></div>
-                        <div class="result-formula">=B22×B21/365</div>
+                        <div class="result-formula">=B22×B1/365</div>
                     </div>
                     <div class="result-card">
                         <div class="result-label">大电网日供电量 <span class="code">B25</span></div>
@@ -619,7 +619,7 @@
         const eff = parseFloat(document.getElementById('eff').value) || 0.85;
         const B17 = parseFloat(document.getElementById('B17').value) || 65;
 
-        const B2 = B1 * 8760;
+        const B2 = B1 * B22;
         const B4 = B3 * B2;
         const B21 = B1;
         const B23 = B22 * B21 / 365;
@@ -659,33 +659,33 @@
         const B14 = B13 + B12;
         const B15 = B4 > 0 ? (B14 / B4 * 10000 / 1000) : 0;
 
-        document.getElementById('B2').textContent = B2.toFixed(0);
-        document.getElementById('B4').textContent = B4.toFixed(0);
-        document.getElementById('B23').textContent = B23.toFixed(0);
-        document.getElementById('B25').textContent = B25.toFixed(0);
-        document.getElementById('B28').textContent = B28.toFixed(0);
-        document.getElementById('D68').textContent = D68.toFixed(0);
-        document.getElementById('F68').textContent = F68.toFixed(0);
-        document.getElementById('B69').textContent = B69.toFixed(0);
-        document.getElementById('B31').textContent = B31.toFixed(0);
-        document.getElementById('B10_calc').textContent = B10_calc.toFixed(0);
-        document.getElementById('I68').textContent = I68.toFixed(0);
-        document.getElementById('J68').textContent = J68.toFixed(0);
-        document.getElementById('B32').textContent = B32.toFixed(0);
-        document.getElementById('C69').textContent = C69.toFixed(0);
+        document.getElementById('B2').textContent = B2.toFixed(1);
+        document.getElementById('B4').textContent = B4.toFixed(1);
+        document.getElementById('B23').textContent = B23.toFixed(1);
+        document.getElementById('B25').textContent = B25.toFixed(1);
+        document.getElementById('B28').textContent = B28.toFixed(1);
+        document.getElementById('D68').textContent = D68.toFixed(1);
+        document.getElementById('F68').textContent = F68.toFixed(1);
+        document.getElementById('B69').textContent = B69.toFixed(1);
+        document.getElementById('B31').textContent = B31.toFixed(1);
+        document.getElementById('B10_calc').textContent = B10_calc.toFixed(1);
+        document.getElementById('I68').textContent = I68.toFixed(1);
+        document.getElementById('J68').textContent = J68.toFixed(1);
+        document.getElementById('B32').textContent = B32.toFixed(1);
+        document.getElementById('C69').textContent = C69.toFixed(1);
         document.getElementById('B33').textContent = B33.toFixed(1);
-        document.getElementById('B34').textContent = B34.toFixed(0);
-        document.getElementById('B35').textContent = B35.toFixed(0);
-        document.getElementById('B36').textContent = B36.toFixed(0);
+        document.getElementById('B34').textContent = B34.toFixed(1);
+        document.getElementById('B35').textContent = B35.toFixed(1);
+        document.getElementById('B36').textContent = B36.toFixed(1);
         document.getElementById('B37').textContent = B37.toFixed(2);
-        document.getElementById('B38').textContent = B38.toFixed(0);
+        document.getElementById('B38').textContent = B38.toFixed(1);
         document.getElementById('B39').textContent = B39.toFixed(2);
         
         const b40El = document.getElementById('B40');
         b40El.textContent = B40;
         b40El.className = B39 < (B3 * 100) ? 'status-badge status-warning' : 'status-badge status-success';
         
-        document.getElementById('B41').textContent = B41.toFixed(0);
+        document.getElementById('B41').textContent = B41.toFixed(1);
         document.getElementById('B42').textContent = B42.toFixed(2);
         document.getElementById('C17').textContent = C17.toFixed(2);
 
