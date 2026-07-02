@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>缁跨數鐩磋繛閰嶅偍璁＄畻鍣?- 缁堟瀬鐗?/title>
+    <title>缂佽法鏁搁惄纾嬬箾闁板秴鍋嶇拋锛勭暬閸?- 缂佸牊鐎悧?/title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,266 +53,266 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>鈿?缁跨數鐩磋繛閰嶅偍璁＄畻鍣?- 缁堟瀬鐗?/h1>
-            <p>瀹屾暣澶嶇幇椋炰功琛ㄦ牸鍏紡 v4.0 | 鍏ㄩ噺杈撳叆/杈撳嚭鍙傛暟鑷煡琛ュ叏</p>
+            <h1>閳?缂佽法鏁搁惄纾嬬箾闁板秴鍋嶇拋锛勭暬閸?- 缂佸牊鐎悧?/h1>
+            <p>鐎瑰本鏆ｆ径宥囧箛妞嬬偘鍔熺悰銊︾壐閸忣剙绱?v4.0 | 閸忋劑鍣烘潏鎾冲弳/鏉堟挸鍤崣鍌涙殶閼奉亝鐓＄悰銉ュ弿</p>
         </div>
         
         <div class="content">
-            <!-- 杈撳叆鍙傛暟鍖?-->
+            <!-- 鏉堟挸鍙嗛崣鍌涙殶閸?-->
             <div class="section input-section">
-                <h2>馃摑 杈撳叆鍙傛暟</h2>
+                <h2>棣冩憫 鏉堟挸鍙嗛崣鍌涙殶</h2>
                 
-                <div class="subsection-title">鍩虹鍙傛暟</div>
+                <div class="subsection-title">閸╄櫣顢呴崣鍌涙殶</div>
                 <div class="input-group">
-                    <label>璐熻嵎鍔熺巼锛堝惈鍚屾椂鐜囷級B1</label>
+                    <label>鐠愮喕宓庨崝鐔哄芳閿涘牆鎯堥崥灞炬閻滃浄绱欱1</label>
                     <input type="number" id="B1" value="120" step="10">
                     <span class="unit">MW</span>
                 </div>
                 <div class="input-group">
-                    <label>骞寸敤鐢垫椂闀?B22</label>
+                    <label>楠炲鏁ら悽鍨闂€?B22</label>
                     <input type="number" id="B22" value="8760" step="100">
                     <span class="unit">H</span>
                 </div>
                 <div class="input-group">
-                    <label>鑷彂鑷敤姣斾緥 B3</label>
+                    <label>閼奉亜褰傞懛顏嗘暏濮ｆ柧绶?B3</label>
                     <input type="number" id="B3" value="0.6" step="0.1" min="0" max="1">
                     <span class="unit">-</span>
                 </div>
                 
-                <div class="subsection-title">鍏変紡瑁呮満</div>
+                <div class="subsection-title">閸忓绱＄憗鍛簚</div>
                 <div class="input-group">
-                    <label>鍏変紡鍔熺巼 B9</label>
+                    <label>閸忓绱￠崝鐔哄芳 B9</label>
                     <input type="number" id="B9" value="0" step="10">
                     <span class="unit">MW</span>
                 </div>
                 <div class="input-group">
-                    <label>鍏変紡鍒╃敤灏忔椂 B7</label>
+                    <label>閸忓绱￠崚鈺冩暏鐏忓繑妞?B7</label>
                     <input type="number" id="B7" value="2000" step="50">
                     <span class="unit">H</span>
-                    <div class="formula-hint">褰卞搷骞村彂鐢甸噺浼扮畻</div>
+                    <div class="formula-hint">瑜板崬鎼烽獮鏉戝絺閻㈢敻鍣烘导鎵暬</div>
                 </div>
                 
-                <div class="subsection-title">椋庣數瑁呮満</div>
+                <div class="subsection-title">妞嬪海鏁哥憗鍛簚</div>
                 <div class="input-group">
-                    <label>椋庣數鍔熺巼 B8</label>
+                    <label>妞嬪海鏁搁崝鐔哄芳 B8</label>
                     <input type="number" id="B8" value="450" step="10">
                     <span class="unit">MW</span>
                 </div>
                 <div class="input-group">
-                    <label>椋庣數鍒╃敤灏忔椂 B30</label>
+                    <label>妞嬪海鏁搁崚鈺冩暏鐏忓繑妞?B30</label>
                     <input type="number" id="B30" value="2400" step="50">
                     <span class="unit">H</span>
                 </div>
                 
-                <div class="subsection-title">鍌ㄨ兘鍙傛暟</div>
+                <div class="subsection-title">閸屻劏鍏橀崣鍌涙殶</div>
                 <div class="input-group">
-                    <label>鍏呮斁鐢垫晥鐜?/label>
+                    <label>閸忓懏鏂侀悽鍨櫏閻?/label>
                     <input type="number" id="eff" value="0.85" step="0.05" min="0" max="1">
                     <span class="unit">-</span>
                 </div>
                 <div class="input-group">
-                    <label>鍌ㄨ兘寰幆娆℃暟 B17</label>
+                    <label>閸屻劏鍏樺顏嗗箚濞嗏剝鏆?B17</label>
                     <input type="number" id="B17" value="65" step="5">
-                    <span class="unit">娆?骞?/span>
-                    <div class="formula-hint">C17 = B17脳0.85</div>
+                    <span class="unit">濞?楠?/span>
+                    <div class="formula-hint">C17 = B17鑴?.85</div>
                 </div>
                 
-                <div class="subsection-title">缁忔祹鍙傛暟锛堥€夊～锛?/div>
+                <div class="subsection-title">缂佸繑绁归崣鍌涙殶閿涘牓鈧锝為敍?/div>
                 <div class="input-group">
-                    <label>鍏変紡鍗曚綅鎶曡祫 B5</label>
+                    <label>閸忓绱￠崡鏇氱秴閹舵洝绁?B5</label>
                     <input type="number" id="B5" value="0" step="0.1" placeholder="0">
-                    <span class="unit">鍏?W</span>
+                    <span class="unit">閸?W</span>
                 </div>
                 <div class="input-group">
-                    <label>鍌ㄨ兘鍗曚綅鎶曡祫 B6</label>
+                    <label>閸屻劏鍏橀崡鏇氱秴閹舵洝绁?B6</label>
                     <input type="number" id="B6" value="0" step="0.1" placeholder="0">
-                    <span class="unit">鍏?Wh</span>
+                    <span class="unit">閸?Wh</span>
                 </div>
                 
                 <div class="button-group">
-                    <button class="btn-calculate" onclick="calculate()">馃敘 寮€濮嬭绠?/button>
-                    <button class="btn-reset" onclick="resetForm()">馃攧 閲嶇疆</button>
+                    <button class="btn-calculate" onclick="calculate()">棣冩晿 瀵偓婵顓哥粻?/button>
+                    <button class="btn-reset" onclick="resetForm()">棣冩敡 闁插秶鐤?/button>
                 </div>
             </div>
             
-            <!-- 璁＄畻缁撴灉鍖?-->
+            <!-- 鐠侊紕鐣荤紒鎾寸亯閸?-->
             <div class="section output-section">
-                <h2>馃搳 璁＄畻缁撴灉</h2>
+                <h2>棣冩惓 鐠侊紕鐣荤紒鎾寸亯</h2>
                 
-                <!-- 绗竴琛岋細鏍稿績鎸囨爣 -->
+                <!-- 缁楊兛绔寸悰宀嬬窗閺嶇绺鹃幐鍥ㄧ垼 -->
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:15px;">
                     <div class="result-card">
-                        <div class="result-label">鎬荤數閲?B2</div>
-                        <div class="result-value"><span id="B2">0</span><span class="result-unit">MWh/骞?/span></div>
-                        <div class="formula-hint">=B1脳8760</div>
+                        <div class="result-label">閹崵鏁搁柌?B2</div>
+                        <div class="result-value"><span id="B2">0</span><span class="result-unit">MWh/楠?/span></div>
+                        <div class="formula-hint">=B1鑴?760</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鑷彂鑷敤鐢甸噺 B4</div>
-                        <div class="result-value"><span id="B4">0</span><span class="result-unit">MWh/骞?/span></div>
-                        <div class="formula-hint">=B3脳B2</div>
+                        <div class="result-label">閼奉亜褰傞懛顏嗘暏閻㈢敻鍣?B4</div>
+                        <div class="result-value"><span id="B4">0</span><span class="result-unit">MWh/楠?/span></div>
+                        <div class="formula-hint">=B3鑴矪2</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">璐熻嵎鏃ョ敤鐢甸噺 B23</div>
-                        <div class="result-value"><span id="B23">0</span><span class="result-unit">MWh/鏃?/span></div>
-                        <div class="formula-hint">=B22脳B21/365</div>
+                        <div class="result-label">鐠愮喕宓庨弮銉ф暏閻㈢敻鍣?B23</div>
+                        <div class="result-value"><span id="B23">0</span><span class="result-unit">MWh/閺?/span></div>
+                        <div class="formula-hint">=B22鑴矪21/365</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">澶х數缃戞棩渚涚數閲?B25</div>
-                        <div class="result-value"><span id="B25">0</span><span class="result-unit">MWh/鏃?/span></div>
-                        <div class="formula-hint">=B2脳(1-B24)/365</div>
+                        <div class="result-label">婢堆呮暩缂冩垶妫╂笟娑氭暩闁?B25</div>
+                        <div class="result-value"><span id="B25">0</span><span class="result-unit">MWh/閺?/span></div>
+                        <div class="formula-hint">=B2鑴?1-B24)/365</div>
                     </div>
                 </div>
                 
-                <div class="subsection-title">鏂拌兘婧愬彂鐢?/div>
+                <div class="subsection-title">閺傛媽鍏樺┃鎰絺閻?/div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
                     <div class="result-card">
-                        <div class="result-label">鏃跺簭鍏変紡鍑哄姏鍜?B28</div>
-                        <div class="result-value"><span id="B28">0</span><span class="result-unit">MWh/鏃?/span></div>
-                        <div class="formula-hint">=危(E44:E67)</div>
+                        <div class="result-label">閺冭泛绨崗澶夌础閸戝搫濮忛崪?B28</div>
+                        <div class="result-value"><span id="B28">0</span><span class="result-unit">MWh/閺?/span></div>
+                        <div class="formula-hint">=鍗?E44:E67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鏃跺簭椋庣數鍑哄姏鍜?D68</div>
-                        <div class="result-value"><span id="D68">0</span><span class="result-unit">MWh/鏃?/span></div>
-                        <div class="formula-hint">=危(D44:D67)</div>
+                        <div class="result-label">閺冭泛绨搴ｆ暩閸戝搫濮忛崪?D68</div>
+                        <div class="result-value"><span id="D68">0</span><span class="result-unit">MWh/閺?/span></div>
+                        <div class="formula-hint">=鍗?D44:D67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鏂拌兘婧愭€诲彂鐢甸噺 F68</div>
-                        <div class="result-value"><span id="F68">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="result-label">閺傛媽鍏樺┃鎰偓璇插絺閻㈢敻鍣?F68</div>
+                        <div class="result-value"><span id="F68">0</span><span class="result-unit">MWh/閺?/span></div>
                         <div class="formula-hint">=D68+E68</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍏変紡鍏稿瀷鍑哄姏鍜?C68</div>
-                        <div class="result-value"><span id="C68">0</span><span class="result-unit">(褰掍竴)</span></div>
-                        <div class="formula-hint">=危(C44:C67)</div>
+                        <div class="result-label">閸忓绱￠崗绋跨€烽崙鍝勫閸?C68</div>
+                        <div class="result-value"><span id="C68">0</span><span class="result-unit">(瑜版帊绔?</span></div>
+                        <div class="formula-hint">=鍗?C44:C67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍏変紡骞村彂鐢甸噺 B69</div>
-                        <div class="result-value"><span id="B69">0</span><span class="result-unit">MWh/骞?/span></div>
-                        <div class="formula-hint">=E68脳365</div>
+                        <div class="result-label">閸忓绱￠獮鏉戝絺閻㈢敻鍣?B69</div>
+                        <div class="result-value"><span id="B69">0</span><span class="result-unit">MWh/楠?/span></div>
+                        <div class="formula-hint">=E68鑴?65</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">椋庣數鏃ュ彂鐢甸噺 B31</div>
-                        <div class="result-value"><span id="B31">0</span><span class="result-unit">MWh/鏃?/span></div>
-                        <div class="formula-hint">=B30脳B29/365</div>
+                        <div class="result-label">妞嬪海鏁搁弮銉ュ絺閻㈢敻鍣?B31</div>
+                        <div class="result-value"><span id="B31">0</span><span class="result-unit">MWh/閺?/span></div>
+                        <div class="formula-hint">=B30鑴矪29/365</div>
                     </div>
                 </div>
                 
-                <div class="subsection-title">鍌ㄨ兘鏍稿績鎸囨爣 猸?/div>
+                <div class="subsection-title">閸屻劏鍏橀弽绋跨妇閹稿洦鐖?鐚?/div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
                     <div class="result-card highlight-card">
-                        <div class="result-label">鍌ㄨ兘瑙勬ā锛堝弽绠楋級B10</div>
+                        <div class="result-label">閸屻劏鍏樼憴鍕侀敍鍫濆冀缁犳绱欱10</div>
                         <div class="result-value"><span id="B10_calc">0</span><span class="result-unit">MWh</span></div>
                         <div class="formula-hint">=B35</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鏃跺簭鎬荤泩浣?I68</div>
-                        <div class="result-value"><span id="I68">0</span><span class="result-unit">MWh/鏃?/span></div>
-                        <div class="formula-hint">=危(I44:I67)</div>
+                        <div class="result-label">閺冭泛绨幀鑽ゆ畅娴?I68</div>
+                        <div class="result-value"><span id="I68">0</span><span class="result-unit">MWh/閺?/span></div>
+                        <div class="formula-hint">=鍗?I44:I67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鏃跺簭鎬绘斁鐢?J68</div>
-                        <div class="result-value"><span id="J68">0</span><span class="result-unit">MWh/鏃?/span></div>
-                        <div class="formula-hint">=危(J44:J67)</div>
+                        <div class="result-label">閺冭泛绨幀缁樻杹閻?J68</div>
+                        <div class="result-value"><span id="J68">0</span><span class="result-unit">MWh/閺?/span></div>
+                        <div class="formula-hint">=鍗?J44:J67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍌ㄨ兘鍙偍瀛?B32</div>
-                        <div class="result-value"><span id="B32">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="result-label">閸屻劏鍏橀崣顖氬亶鐎?B32</div>
+                        <div class="result-value"><span id="B32">0</span><span class="result-unit">MWh/閺?/span></div>
                         <div class="formula-hint">=I68</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍌ㄨ兘骞村彲鍌?C69</div>
-                        <div class="result-value"><span id="C69">0</span><span class="result-unit">MWh/骞?/span></div>
-                        <div class="formula-hint">=I68脳365</div>
+                        <div class="result-label">閸屻劏鍏橀獮鏉戝讲閸?C69</div>
+                        <div class="result-value"><span id="C69">0</span><span class="result-unit">MWh/楠?/span></div>
+                        <div class="formula-hint">=I68鑴?65</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鏈€澶х泩浣?B33</div>
+                        <div class="result-label">閺堚偓婢堆呮畅娴?B33</div>
                         <div class="result-value"><span id="B33">0</span><span class="result-unit">MWh</span></div>
                         <div class="formula-hint">=-MIN(I44:I67)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍌ㄨ兘鏃ユ斁鐢靛閲?B34</div>
-                        <div class="result-value"><span id="B34">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="result-label">閸屻劏鍏橀弮銉︽杹閻㈤潧顔愰柌?B34</div>
+                        <div class="result-value"><span id="B34">0</span><span class="result-unit">MWh/閺?/span></div>
                         <div class="formula-hint">=IF((J68-B25)>0,J68-B25,0)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍌ㄨ兘瀹為檯鍏呯數閲?B35</div>
-                        <div class="result-value"><span id="B35">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="result-label">閸屻劏鍏樼€圭偤妾崗鍛暩闁?B35</div>
+                        <div class="result-value"><span id="B35">0</span><span class="result-unit">MWh/閺?/span></div>
                         <div class="formula-hint">=B34/0.85</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">寮冪數閲?B36</div>
-                        <div class="result-value"><span id="B36">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="result-label">瀵啰鏁搁柌?B36</div>
+                        <div class="result-value"><span id="B36">0</span><span class="result-unit">MWh/閺?/span></div>
                         <div class="formula-hint">=B32-B35</div>
                     </div>
                 </div>
                 
-                <div class="subsection-title">娑堢撼涓庢崯鑰楁寚鏍?/div>
+                <div class="subsection-title">濞戝牏鎾兼稉搴㈠疮閼版瀵氶弽?/div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:10px; margin-bottom:15px;">
                     <div class="result-card">
-                        <div class="result-label">寮冪數鐜?B37</div>
+                        <div class="result-label">瀵啰鏁搁悳?B37</div>
                         <div class="result-value"><span id="B37">0</span><span class="result-unit">%</span></div>
                         <div class="formula-hint">=B36/(B28+B31)</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">缁跨數缁堢娑堢撼閲?B38</div>
-                        <div class="result-value"><span id="B38">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="result-label">缂佽法鏁哥紒鍫㈩伂濞戝牏鎾奸柌?B38</div>
+                        <div class="result-value"><span id="B38">0</span><span class="result-unit">MWh/閺?/span></div>
                         <div class="formula-hint">=IF(B36&lt;0,B28+B31,B28+B31-B36-(B35-B34))</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">娑堢撼姣斾緥 B39</div>
+                        <div class="result-label">濞戝牏鎾煎В鏂剧伐 B39</div>
                         <div class="result-value"><span id="B39">0</span><span class="result-unit">%</span></div>
                         <div class="formula-hint">=B38/G68</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">渚涚數姣斾緥鍒ゆ柇 B40</div>
+                        <div class="result-label">娓氭稓鏁稿В鏂剧伐閸掋倖鏌?B40</div>
                         <div class="result-value" style="font-size:14px"><span id="B40">-</span></div>
-                        <div class="formula-hint">=IF(B39&lt;B3,"鏈弧瓒?,"婊¤冻")</div>
+                        <div class="formula-hint">=IF(B39&lt;B3,"閺堫亝寮х搾?,"濠娐ゅ喕")</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍌ㄨ兘鎹熻€?B41</div>
-                        <div class="result-value"><span id="B41">0</span><span class="result-unit">MWh/鏃?/span></div>
+                        <div class="result-label">閸屻劏鍏橀幑鐔烩偓?B41</div>
+                        <div class="result-value"><span id="B41">0</span><span class="result-unit">MWh/閺?/span></div>
                         <div class="formula-hint">=B35-B34</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍌ㄨ兘鎹熻€楃巼 B42</div>
+                        <div class="result-label">閸屻劏鍏橀幑鐔烩偓妤冨芳 B42</div>
                         <div class="result-value"><span id="B42">0</span><span class="result-unit">%</span></div>
                         <div class="formula-hint">=B41/B28</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍌ㄨ兘绛夋晥寰幆 C17</div>
-                        <div class="result-value"><span id="C17">0</span><span class="result-unit">娆?骞?/span></div>
-                        <div class="formula-hint">=B17脳0.85</div>
+                        <div class="result-label">閸屻劏鍏樼粵澶嬫櫏瀵邦亞骞?C17</div>
+                        <div class="result-value"><span id="C17">0</span><span class="result-unit">濞?楠?/span></div>
+                        <div class="formula-hint">=B17鑴?.85</div>
                     </div>
                 </div>
                 
-                <div class="subsection-title">缁忔祹鎸囨爣锛堝～B5/B6鏃舵樉绀猴級</div>
+                <div class="subsection-title">缂佸繑绁归幐鍥ㄧ垼閿涘牆锝濨5/B6閺冭埖妯夌粈鐚寸礆</div>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap:10px;" id="investmentSection" style="display:none">
                     <div class="result-card">
-                        <div class="result-label">鍏変紡鎶曡祫 B12</div>
-                        <div class="result-value"><span id="B12">-</span><span class="result-unit">涓囧厓</span></div>
-                        <div class="formula-hint">=B9脳10鈦睹桞5/10鈦?/div>
+                        <div class="result-label">閸忓绱￠幎鏇＄カ B12</div>
+                        <div class="result-value"><span id="B12">-</span><span class="result-unit">娑撳洤鍘?/span></div>
+                        <div class="formula-hint">=B9鑴?0閳︾澒妗?/10閳?/div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍌ㄨ兘鎶曡祫 B13</div>
-                        <div class="result-value"><span id="B13">-</span><span class="result-unit">涓囧厓</span></div>
-                        <div class="formula-hint">=B10脳B6脳10鈦?10鈦?/div>
+                        <div class="result-label">閸屻劏鍏橀幎鏇＄カ B13</div>
+                        <div class="result-value"><span id="B13">-</span><span class="result-unit">娑撳洤鍘?/span></div>
+                        <div class="formula-hint">=B10鑴矪6鑴?0閳?10閳?/div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鎬绘姇璧?B14</div>
-                        <div class="result-value"><span id="B14">-</span><span class="result-unit">涓囧厓</span></div>
+                        <div class="result-label">閹粯濮囩挧?B14</div>
+                        <div class="result-value"><span id="B14">-</span><span class="result-unit">娑撳洤鍘?/span></div>
                         <div class="formula-hint">=B13+B12</div>
                     </div>
                     <div class="result-card">
-                        <div class="result-label">鍗曚綅鎶曡祫 B15</div>
-                        <div class="result-value"><span id="B15">-</span><span class="result-unit">鍏?kWh</span></div>
-                        <div class="formula-hint">=B14/B4脳10000/1000</div>
+                        <div class="result-label">閸楁洑缍呴幎鏇＄カ B15</div>
+                        <div class="result-value"><span id="B15">-</span><span class="result-unit">閸?kWh</span></div>
+                        <div class="formula-hint">=B14/B4鑴?0000/1000</div>
                     </div>
                 </div>
             </div>
             
-            <!-- 鏃跺簭妯℃嫙鍖?-->
+            <!-- 閺冭泛绨Ο鈩冨珯閸?-->
             <div class="section timing-section full-width">
-                <h2>鈴?24灏忔椂鏃跺簭妯℃嫙</h2>
+                <h2>閳?24鐏忓繑妞傞弮璺虹碍濡剝瀚?/h2>
                 <div class="chart-container">
                     <canvas id="timingChart" height="280"></canvas>
                 </div>
@@ -320,16 +320,16 @@
                     <table class="timing-table">
                         <thead>
                             <tr>
-                                <th>鏃堕棿</th>
-                                <th>B:椋庣數鍏稿瀷<br>(1MW)</th>
-                                <th>C:鍏変紡鍏稿瀷<br>(1MW)</th>
-                                <th>D:椋庣數<br>鍑哄姏(MW)</th>
-                                <th>E:鍏変紡<br>鍑哄姏(MW)</th>
-                                <th>F:鍚堣<br>鍑哄姏(MW)</th>
-                                <th>G:璐熻嵎<br>(MW)</th>
-                                <th>H:鐩堜綑<br>/缂哄彛</th>
-                                <th>I:鍙偍</th>
-                                <th>J:鏀剧數</th>
+                                <th>閺冨爼妫?/th>
+                                <th>B:妞嬪海鏁搁崗绋跨€?br>(1MW)</th>
+                                <th>C:閸忓绱￠崗绋跨€?br>(1MW)</th>
+                                <th>D:妞嬪海鏁?br>閸戝搫濮?MW)</th>
+                                <th>E:閸忓绱?br>閸戝搫濮?MW)</th>
+                                <th>F:閸氬牐顓?br>閸戝搫濮?MW)</th>
+                                <th>G:鐠愮喕宓?br>(MW)</th>
+                                <th>H:閻╁牅缍?br>/缂傚搫褰?/th>
+                                <th>I:閸欘垰鍋?/th>
+                                <th>J:閺€鍓ф暩</th>
                             </tr>
                         </thead>
                         <tbody id="timingTableBody"></tbody>
@@ -340,7 +340,7 @@
     </div>
     
     <script>
-        // 24灏忔椂鍏稿瀷鍑哄姏鏁版嵁锛?400H椋庣數/2000H鍏変紡锛?        const windTypicalCurve = [400,420,450,440,410,380,330,250,180,120,100,110,130,150,160,150,170,200,260,320,360,380,390,400];
+        // 24鐏忓繑妞傞崗绋跨€烽崙鍝勫閺佺増宓侀敍?400H妞嬪海鏁?2000H閸忓绱￠敍?        const windTypicalCurve = [400,420,450,440,410,380,330,250,180,120,100,110,130,150,160,150,170,200,260,320,360,380,390,400];
         const solarTypicalCurve = [0,0,0,0,0,0,0,8,40,153,356,529,644,688,672,600,490,344,152,47,11,0,0,0];
         
         let timingChart = null;
@@ -388,7 +388,7 @@
             const B37 = (B28 + B31) > 0 ? (B36 / (B28 + B31) * 100) : 0;
             const B38 = B36 < 0 ? (B28 + B31) : (B28 + B31 - B36 - (B35 - B34));
             const B39 = G68 > 0 ? (B38 / G68 * 100) : 0;
-            const B40 = B39 < (B3 * 100) ? "鏈弧瓒充緵鐢垫瘮渚嬭姹? : "婊¤冻瑕佹眰";
+            const B40 = B39 < (B3 * 100) ? "閺堫亝寮х搾鍏呯返閻㈠灚鐦笟瀣洣濮? : "濠娐ゅ喕鐟曚焦鐪?;
             const B41 = B35 - B34;
             const B42 = B28 > 0 ? (B41 / B28 * 100) : 0;
             const B10_calc = B35;
@@ -482,16 +482,16 @@
                 data: {
                     labels: labels,
                     datasets: [
-                        { label:'椋庣數鍑哄姏', data:windData, borderColor:'rgba(0,123,255,1)', backgroundColor:'rgba(0,123,255,0.1)', borderWidth:2, fill:true },
-                        { label:'鍏変紡鍑哄姏', data:solarData, borderColor:'rgba(255,193,7,1)', backgroundColor:'rgba(255,193,7,0.1)', borderWidth:2, fill:true },
-                        { label:'鍚堣鍑哄姏', data:totalData, borderColor:'rgba(40,167,69,1)', backgroundColor:'rgba(40,167,69,0.1)', borderWidth:3, fill:false },
-                        { label:'璐熻嵎', data:loadData, borderColor:'rgba(220,53,69,1)', borderWidth:2, borderDash:[5,5], fill:false }
+                        { label:'妞嬪海鏁搁崙鍝勫', data:windData, borderColor:'rgba(0,123,255,1)', backgroundColor:'rgba(0,123,255,0.1)', borderWidth:2, fill:true },
+                        { label:'閸忓绱￠崙鍝勫', data:solarData, borderColor:'rgba(255,193,7,1)', backgroundColor:'rgba(255,193,7,0.1)', borderWidth:2, fill:true },
+                        { label:'閸氬牐顓搁崙鍝勫', data:totalData, borderColor:'rgba(40,167,69,1)', backgroundColor:'rgba(40,167,69,0.1)', borderWidth:3, fill:false },
+                        { label:'鐠愮喕宓?, data:loadData, borderColor:'rgba(220,53,69,1)', borderWidth:2, borderDash:[5,5], fill:false }
                     ]
                 },
                 options: {
                     responsive:true, maintainAspectRatio:false,
-                    plugins:{ title:{display:true,text:'24灏忔椂鏂拌兘婧愬嚭鍔涗笌璐熻嵎鍖归厤',font:{size:16}}, legend:{position:'top'} },
-                    scales:{ y:{beginAtZero:true,title:{display:true,text:'鍔熺巼 (MW)'}}, x:{title:{display:true,text:'鏃堕棿'}} }
+                    plugins:{ title:{display:true,text:'24鐏忓繑妞傞弬鎷屽厴濠ф劕鍤崝娑楃瑢鐠愮喕宓庨崠褰掑帳',font:{size:16}}, legend:{position:'top'} },
+                    scales:{ y:{beginAtZero:true,title:{display:true,text:'閸旂喓宸?(MW)'}}, x:{title:{display:true,text:'閺冨爼妫?}} }
                 }
             });
         }
@@ -503,51 +503,6 @@
         }
         
         window.onload = calculate;
-    </script></script>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Microsoft YaHei', Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
-        .container { max-width: 1800px; margin: 0 auto; background: white; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); overflow: hidden; }
-        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; text-align: center; }
-        .header h1 { font-size: 32px; margin-bottom: 10px; }
-        .header p { font-size: 16px; opacity: 0.9; }
-        .content { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; padding: 30px; }
-        .section { background: #f8f9fa; border-radius: 15px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        .section h2 { color: #667eea; font-size: 22px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #667eea; }
-        .input-group { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .input-group label { flex: 1; color: #333; font-weight: 600; font-size: 13px; }
-        .input-group input { width: 110px; padding: 8px 10px; border: 2px solid #ddd; border-radius: 8px; font-size: 13px; transition: all 0.3s; }
-        .input-group input:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); }
-        .unit { color: #666; font-size: 12px; width: 70px; }
-        .button-group { display: flex; gap: 15px; margin-top: 20px; }
-        button { flex: 1; padding: 14px; border: none; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; }
-        .btn-calculate { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
-        .btn-calculate:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3); }
-        .btn-reset { background: #6c757d; color: white; }
-        .btn-reset:hover { background: #5a6268; }
-        .results { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .result-card { background: white; border-radius: 8px; padding: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .result-label { color: #666; font-size: 11px; margin-bottom: 4px; }
-        .result-value { color: #667eea; font-size: 18px; font-weight: 700; }
-        .result-unit { color: #666; font-size: 11px; margin-left: 3px; }
-        .full-width { grid-column: 1 / -1; }
-        .chart-container { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        .chart-container h3 { color: #667eea; margin-bottom: 20px; font-size: 18px; }
-        .timing-table { width: 100%; border-collapse: collapse; font-size: 11px; margin-top: 15px; }
-        .timing-table th { background: #667eea; color: white; padding: 6px; text-align: center; position: sticky; top: 0; }
-        .timing-table td { padding: 4px 6px; text-align: center; border-bottom: 1px solid #eee; }
-        .timing-table tr:nth-child(even) { background: #f8f9fa; }
-        .timing-table tr:hover { background: #e9ecef; }
-        .positive { color: #28a745; }
-        .negative { color: #dc3545; }
-        .formula-hint { font-size: 9px; color: #999; margin-top: 2px; }
-        .input-section { background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); }
-        .output-section { background: linear-gradient(135deg, #e8f4f8 0%, #f0f8ff 100%); }
-        .timing-section { background: linear-gradient(135deg, #fff8e8 0%, #fff5e6 100%); }
-        .subsection-title { color: #764ba2; font-size: 14px; font-weight: 700; margin: 15px 0 8px 0; padding-left: 5px; border-left: 4px solid #764ba2; }
-        .highlight-card { background: linear-gradient(135deg, #fff3cd, #ffeeba) !important; border: 2px solid #ffc107; }
-        .highlight-card .result-value { color: #856404; font-size: 22px; }
-    </style>
-
+    </script>
 </body>
 </html>
